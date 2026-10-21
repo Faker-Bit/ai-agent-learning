@@ -31,3 +31,6 @@ Thumbs.db
 
 # Build artefacts
 frontend/dist/
+
+# Research cache - regenerate with backend/tools/research.py (not needed to run the site)
+backend/app/content/_research.json

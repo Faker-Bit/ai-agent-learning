@@ -79,6 +79,25 @@ def main() -> int:
         check("protocols", len(site["protocols"]) >= 5)
         check("context playbook", len(site["context_playbook"]) >= 4)
         check("skills walkthrough", any(w["id"] == "opencode-skills" for w in site["walkthroughs"]))
+        check("model hub", len(site["model_hub"]) >= 10)
+        check("model hub vendors", len({m["vendor"] for m in site["model_hub"]}) >= 8)
+        lab = site["security_lab"]
+        check("security taxonomy", len(lab["taxonomy"]) >= 8)
+        check("security signatures", len(lab["signatures"]) >= 5)
+        check("security defences", len(lab["defences"]) >= 6)
+        check("security playbook", len(lab["playbook"]) >= 6)
+        check("security findings", len(lab["findings"]) >= 3)
+        check("security sources", len(lab["where_to_look"]) >= 5)
+
+        catalogue = httpx.get(f"{BASE}/api/site/resources", timeout=15).json()
+        check("resource catalogue", catalogue["total"] >= 60, str(catalogue["total"]))
+        check("resource categories", len(catalogue["categories"]) >= 8)
+        filtered = httpx.get(
+            f"{BASE}/api/site/resources", params={"category": "prompt-security"}, timeout=15
+        ).json()
+        check("resource filter", filtered["matched"] > 0)
+        searched = httpx.get(f"{BASE}/api/site/resources", params={"q": "garak"}, timeout=15).json()
+        check("resource search", searched["matched"] >= 1)
 
         check(
             "walkthrough steps have narration",

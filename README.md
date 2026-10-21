@@ -19,9 +19,12 @@ command reference and a guide to choosing models.
 | **Protocols** | MCP, ACP, LSP, hooks, plugins and slash commands - what each is, whether it is portable, what it costs you in context. |
 | **Context playbook** | Five rules for keeping the context window honest: inline the rules, reference the code, compact at boundaries, subagents for side quests, memory files over memory features, and a budget for every run. |
 | **Agent directory** | 28 agents (CLI, IDE, models, platforms, control planes) with install commands, star counts, what each is for and the commands worth memorising. Filterable by kind. |
+| **Model learning hub** | 11 model families - ChatGPT, Claude, Gemini, DeepSeek, Grok, Qwen, Llama, Mistral, Groq/Cerebras, OpenRouter, Antigravity - each with where to use it, the API details, copyable client code, prompting tips, agent integration, limits and docs links. |
+| **Prompt lab & AI security** | 10 attack classes mapped to OWASP LLM Top 10 and MITRE ATLAS, log-side detection signatures, 7 defence layers, an 8-step safe-testing playbook, and the current research (arXiv 2602.22242 vulnerability rates, the JailbreakHub 1,405-prompt study) with the communities and papers to read. |
+| **Research catalogue** | 80+ GitHub projects across 10 categories, fetched from the API with install commands and usage examples extracted from each README, searchable and filterable. Star counts and last-push dates included so you can spot an abandoned project. |
 | **Walkthroughs** | 9 full guided sessions as animated terminals: step list, narration, copyable command, real output, tips. Play/pause, step, speed control, auto-advance. Includes a walkthrough that writes an agent skill from scratch. |
 | **The craft** | 7 prompting rules, each with an animated before/after terminal, plus 4 ready-to-paste config files. |
-| **Models** | How to pick a model by task, context-window reality, real free tiers, local models, reasoning effort, prompt caching, routers - plus the full catalogue with free/paid flags. |
+| **Model guides** | How to pick a model by task, context-window reality, real free tiers, local models, reasoning effort, prompt caching, routers - plus the full catalogue with free/paid flags. |
 | **Command reference** | 130+ commands across every agent, searchable and filterable by agent and group, copyable in one click. |
 | **Comparison** | Side-by-side capability matrix for the CLI agents. |
 
@@ -91,6 +94,9 @@ All site content is Python data under `backend/app/content/`, served as one JSON
 | `content/cheatsheet.py` | The command reference rows. |
 | `content/guide.py` | The loop stages, the craft rules, the model guide, config snippets, comparison matrix. |
 | `content/harness.py` | Harness layers, harness projects, the skills format, skill packages, orchestrators, protocols, the context playbook. |
+| `content/models_hub.py` | The model learning hub: one entry per model family with API details, prompting tips and agent notes. |
+| `content/security_lab.py` | Attack taxonomy, detection signatures, defence layers, testing playbook, research findings, frameworks and sources. |
+| `content/resources.py` | Generated resource catalogue (83 repos, 10 categories) - rebuild with `tools/build_resources.py`. |
 | `providers/registry.py` | Provider metadata and the model catalogue (free/paid flags, context windows). |
 
 Terminal lines are typed with a `type` that drives the colour:
@@ -145,6 +151,22 @@ only to mark a provider as *key present* on the Models page — it never calls a
 | `*_BASE_URL` | Endpoint overrides shown in the model tables (Ollama, LM Studio, …) |
 
 ---
+
+### Refreshing the research
+
+The resource catalogue and the GitHub-derived sections are generated, not hand-typed:
+
+```bat
+cd backend
+.venv\Scripts\python.exe tools\research.py        :: search GitHub, pull READMEs
+.venv\Scripts\python.exe tools\research2.py       :: topic-scoped second pass
+.venv\Scripts\python.exe tools\research3.py       :: fetch named repos
+.venv\Scripts\python.exe tools\build_resources.py :: write content\resources.py
+```
+
+`research.py` writes `app/content/_research.json` (star counts, licenses, last-push dates, install
+commands and README examples for 700+ repos). `build_resources.py` turns that into the curated
+catalogue the site serves from `/api/site/resources`.
 
 ## Extending the site
 

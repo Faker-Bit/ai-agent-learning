@@ -1,4 +1,4 @@
-import { BookOpen, ChevronRight, Command, Cpu, Terminal } from "lucide-react";
+﻿import { BookOpen, ChevronRight, Command, Cpu, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const NAV = [
@@ -6,9 +6,10 @@ const NAV = [
   { href: "/#harness", label: "Harness" },
   { href: "/#skills", label: "Skills" },
   { href: "/#agents", label: "Agents" },
+  { href: "/#model-hub", label: "Models" },
+  { href: "/#security", label: "Security lab" },
+  { href: "/#resources", label: "Resources" },
   { href: "/#walkthroughs", label: "Walkthroughs" },
-  { href: "/#craft", label: "Craft" },
-  { href: "/#models", label: "Models" },
   { href: "/#cheatsheet", label: "Commands" },
 ];
 

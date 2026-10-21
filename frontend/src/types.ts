@@ -192,6 +192,96 @@ export interface ContextEntry {
   good: string;
 }
 
+export interface ModelHubEntry {
+  id: string;
+  name: string;
+  vendor: string;
+  tier: string;
+  blurb: string;
+  best_for: string[];
+  surfaces: string[][];
+  api: {
+    base_url: string;
+    style: string;
+    key_url: string;
+    env: string;
+    install: string;
+    code: string;
+  };
+  prompting: string[];
+  agent_notes: string[];
+  limits: string[];
+  links: string[][];
+}
+
+export interface HubIntro {
+  title: string;
+  body: string;
+  principles: string[][];
+}
+
+export interface TaxonomyEntry {
+  id: string;
+  name: string;
+  owasp: string;
+  atlas: string;
+  mechanism: string;
+  pattern: string;
+  example: string;
+  breaks: string;
+  detect: string;
+  defend: string;
+}
+
+export interface DetectionSignature {
+  name: string;
+  pattern: string;
+  channel: string;
+  use: string;
+}
+
+export interface DefenceLayer {
+  id: string;
+  title: string;
+  how: string;
+  owasp: string;
+  limits: string;
+}
+
+export interface PlaybookStep {
+  id: string;
+  title: string;
+  body: string;
+}
+
+export interface ResearchFinding {
+  id: string;
+  title: string;
+  source: string;
+  link: string;
+  body: string;
+  rows: string[][];
+  lesson: string;
+}
+
+export interface LabStep {
+  id: string;
+  title: string;
+  body: string;
+  try: string;
+}
+
+export interface SecurityLab {
+  taxonomy: TaxonomyEntry[];
+  signatures: DetectionSignature[];
+  defences: DefenceLayer[];
+  playbook: PlaybookStep[];
+  findings: ResearchFinding[];
+  frameworks: { name: string; link: string; note: string }[];
+  where_to_look: { name: string; link: string; note: string }[];
+  lab: LabStep[];
+}
+
 export interface SiteContent {
   agents: Agent[];
   walkthroughs: Walkthrough[];
@@ -211,4 +301,7 @@ export interface SiteContent {
   orchestrators: Orchestrator[];
   protocols: Protocol[];
   context_playbook: ContextEntry[];
+  model_hub: ModelHubEntry[];
+  hub_intro: HubIntro;
+  security_lab: SecurityLab;
 }

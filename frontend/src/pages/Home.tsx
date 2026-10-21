@@ -1,4 +1,4 @@
-import { AlertTriangle } from "lucide-react";
+﻿import { AlertTriangle } from "lucide-react";
 
 import { AgentsSection } from "../components/site/AgentsSection";
 import { SiteFooter, SiteHeader } from "../components/site/Chrome";
@@ -6,8 +6,11 @@ import { CraftSection } from "../components/site/CraftSection";
 import { HarnessSection } from "../components/site/HarnessSection";
 import { Hero } from "../components/site/Hero";
 import { LoopSection } from "../components/site/LoopSection";
+import { ModelHubSection } from "../components/site/ModelHubSection";
 import { ModelsSection } from "../components/site/ModelsSection";
 import { CheatsheetSection, CompareSection } from "../components/site/ReferenceSections";
+import { ResourcesSection } from "../components/site/ResourcesSection";
+import { SecurityLabSection } from "../components/site/SecurityLabSection";
 import { CtaSection, WalkthroughsSection } from "../components/site/WalkthroughsSection";
 import { useSiteContent } from "../hooks/useSite";
 
@@ -64,6 +67,8 @@ export function Home() {
           playbook={content.context_playbook}
         />
         <AgentsSection agents={content.agents} />
+        <ModelHubSection models={content.model_hub} intro={content.hub_intro} />
+        <SecurityLabSection lab={content.security_lab} />
         <WalkthroughsSection walkthroughs={content.walkthroughs} agents={content.agents} />
         <CraftSection craft={content.craft} snippets={content.config_snippets} />
         <ModelsSection
@@ -76,6 +81,7 @@ export function Home() {
           groups={content.cheatsheet_groups}
           agents={content.agents}
         />
+        <ResourcesSection />
         <CompareSection rows={content.comparison} agents={content.agents} />
         <CtaSection />
       </main>

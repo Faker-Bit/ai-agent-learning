@@ -22,6 +22,18 @@ from app.content.harness import (
     SKILL_FORMAT,
     SKILL_PACKAGES,
 )
+from app.content.models_hub import HUB_INTRO, MODEL_HUB
+from app.content.resources import GENERATED, RESOURCE_CATEGORIES, RESOURCES
+from app.content.security_lab import (
+    ATTACK_TAXONOMY,
+    DEFENCE_LAYERS,
+    DETECTION_SIGNATURES,
+    FRAMEWORKS,
+    PROMPT_LAB_PLAYBOOK,
+    RESEARCH_FINDINGS,
+    TEST_PLAYBOOK,
+    WHERE_TO_LOOK,
+)
 from app.content.walkthroughs import WALKTHROUGHS
 from app.providers.registry import CURATED_MODELS, PROVIDER_META, ProviderRegistry
 
@@ -82,6 +94,53 @@ async def build_payload() -> dict[str, Any]:
         "orchestrators": ORCHESTRATORS,
         "protocols": PROTOCOLS,
         "context_playbook": CONTEXT_PLAYBOOK,
+        "model_hub": MODEL_HUB,
+        "hub_intro": HUB_INTRO,
+        "security_lab": {
+            "taxonomy": ATTACK_TAXONOMY,
+            "signatures": DETECTION_SIGNATURES,
+            "defences": DEFENCE_LAYERS,
+            "playbook": TEST_PLAYBOOK,
+            "findings": RESEARCH_FINDINGS,
+            "frameworks": FRAMEWORKS,
+            "where_to_look": WHERE_TO_LOOK,
+            "lab": PROMPT_LAB_PLAYBOOK,
+        },
+    }
+
+
+@router.get("/resources")
+async def resources(
+    q: str = "", category: str = "", limit: int = 200
+) -> dict[str, Any]:
+    """The GitHub research catalogue, filtered. Kept out of /site so the page stays fast."""
+    needle = q.strip().lower()
+    picked: list[dict[str, Any]] = []
+    for item in RESOURCES:
+        if category and item["category"] != category:
+            continue
+        if needle:
+            haystack = " ".join(
+                [
+                    item["name"],
+                    item["repo"],
+                    item.get("description", ""),
+                    item.get("note", ""),
+                    " ".join(item.get("topics", [])),
+                ]
+            ).lower()
+            if needle not in haystack:
+                continue
+        picked.append(item)
+        if len(picked) >= limit:
+            break
+
+    return {
+        "generated": GENERATED,
+        "categories": RESOURCE_CATEGORIES,
+        "resources": picked,
+        "total": len(RESOURCES),
+        "matched": len(picked),
     }
 
 

@@ -147,3 +147,103 @@ def test_walkthrough_covers_skills() -> None:
     assert "opencode-skills" in ids
     skills = next(w for w in WALKTHROUGHS if w["id"] == "opencode-skills")
     assert any("SKILL.md" in line["text"] for step in skills["steps"] for line in step["lines"])
+
+
+def test_model_hub_integrity() -> None:
+    from app.content.models_hub import HUB_INTRO, MODEL_HUB
+
+    assert len(MODEL_HUB) >= 10
+    vendors = {model["vendor"] for model in MODEL_HUB}
+    assert {"OpenAI", "Anthropic", "Google", "DeepSeek", "xAI", "Alibaba"} <= vendors
+    for model in MODEL_HUB:
+        assert model["name"] and model["vendor"] and model["blurb"]
+        assert model["tier"] in ("free", "paid", "local", "free+paid")
+        assert len(model["best_for"]) >= 3
+        assert len(model["surfaces"]) >= 2
+        assert len(model["prompting"]) >= 4
+        assert len(model["agent_notes"]) >= 1
+        assert len(model["limits"]) >= 1
+        assert model["api"]["base_url"].startswith("http")
+        assert model["api"]["code"].strip()
+        assert model["api"]["env"]
+        assert len(model["links"]) >= 2
+    assert HUB_INTRO["body"]
+    assert len(HUB_INTRO["principles"]) >= 4
+
+
+def test_security_lab_integrity() -> None:
+    from app.content.security_lab import (
+        ATTACK_TAXONOMY,
+        DEFENCE_LAYERS,
+        DETECTION_SIGNATURES,
+        FRAMEWORKS,
+        PROMPT_LAB_PLAYBOOK,
+        RESEARCH_FINDINGS,
+        TEST_PLAYBOOK,
+        WHERE_TO_LOOK,
+    )
+
+    assert len(ATTACK_TAXONOMY) >= 8
+    for entry in ATTACK_TAXONOMY:
+        assert entry["name"] and entry["owasp"] and entry["atlas"]
+        assert entry["mechanism"] and entry["detect"] and entry["defend"]
+        # the lab teaches structure, not turnkey payloads
+        assert "sanitised" in entry["example"].lower() or "structure" in entry["example"].lower()
+
+    assert len(DETECTION_SIGNATURES) >= 5
+    for signature in DETECTION_SIGNATURES:
+        assert signature["name"] and signature["pattern"] and signature["channel"]
+
+    assert len(DEFENCE_LAYERS) >= 6
+    for layer in DEFENCE_LAYERS:
+        assert layer["title"] and layer["how"] and layer["limits"]
+
+    assert len(TEST_PLAYBOOK) >= 6
+    for step in TEST_PLAYBOOK:
+        assert step["title"] and step["body"]
+
+    assert len(RESEARCH_FINDINGS) >= 3
+    for finding in RESEARCH_FINDINGS:
+        assert finding["title"] and finding["link"].startswith("http")
+        assert finding["rows"] and finding["lesson"]
+
+    assert len(FRAMEWORKS) >= 4
+    assert len(WHERE_TO_LOOK) >= 5
+    assert len(PROMPT_LAB_PLAYBOOK) >= 5
+
+
+def test_resources_catalogue_integrity() -> None:
+    from app.content.resources import GENERATED, RESOURCE_CATEGORIES, RESOURCES
+
+    assert len(RESOURCES) >= 60
+    assert len(RESOURCE_CATEGORIES) >= 8
+    category_ids = {category["id"] for category in RESOURCE_CATEGORIES}
+    for item in RESOURCES:
+        assert item["repo"].count("/") == 1
+        assert item["url"].startswith("https://github.com/")
+        assert item["category"] in category_ids
+        assert item["description"]
+        assert item["stars"] >= 0
+        assert item["license"]
+        assert item["note"], f"{item['repo']} has no usage note"
+    ids = [item["id"] for item in RESOURCES]
+    assert len(ids) == len(set(ids)), "duplicate resource id"
+    assert GENERATED
+
+
+async def test_resources_endpoint(client: httpx.AsyncClient) -> None:
+    resp = await client.get("/api/site/resources")
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["total"] >= 60
+    assert body["matched"] == body["total"]
+    assert body["categories"]
+
+    filtered = await client.get("/api/site/resources", params={"category": "prompt-security"})
+    assert filtered.status_code == 200
+    assert filtered.json()["matched"] > 0
+    assert all(r["category"] == "prompt-security" for r in filtered.json()["resources"])
+
+    searched = await client.get("/api/site/resources", params={"q": "garak"})
+    assert searched.status_code == 200
+    assert searched.json()["matched"] >= 1
