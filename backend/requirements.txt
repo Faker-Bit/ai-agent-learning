@@ -1,0 +1,17 @@
+# AI Model Teach — backend dependencies
+# Compatible with Python 3.12–3.14 (verified on 3.14.7 / Windows)
+fastapi>=0.115.0,<1.0
+uvicorn[standard]>=0.32.0
+pydantic>=2.10.0,<3.0
+pydantic-settings>=2.7.0
+SQLAlchemy>=2.0.36
+# greenlet is required by SQLAlchemy asyncio on Python 3.13/3.14 but is not
+# always pulled in automatically by pip markers — pin it explicitly.
+greenlet>=3.0.0
+aiosqlite>=0.20.0
+httpx>=0.28.0
+python-multipart>=0.0.18
+python-dotenv>=1.0.1
+# testing
+pytest>=8.3.0
+pytest-asyncio>=0.25.0

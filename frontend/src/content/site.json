@@ -1,0 +1,5981 @@
+{
+ "agents": [
+  {
+   "id": "opencode",
+   "name": "opencode",
+   "tagline": "The open-source terminal agent that talks to every model provider",
+   "kind": "CLI",
+   "license": "MIT",
+   "docs": "https://opencode.ai/docs/",
+   "repo": "https://github.com/anomalyco/opencode",
+   "install": "curl -fsSL https://opencode.ai/install | bash",
+   "install_alt": "npm install -g opencode-ai",
+   "install_windows": "npm install -g opencode-ai   # or: scoop install opencode",
+   "best_for": "A free, provider-agnostic agent you can script, extend and automate.",
+   "highlights": [
+    "Runs the provider list from models.dev - any model, any key",
+    "Two primary agents (build / plan) plus subagents you can write yourself",
+    "Permission system with per-command glob rules",
+    "MCP servers, custom slash commands, AGENTS.md rules",
+    "Headless modes: opencode run, opencode serve, opencode web"
+   ],
+   "commands": [
+    [
+     "opencode",
+     "Start the TUI in the current directory"
+    ],
+    [
+     "opencode /path/to/project",
+     "Start the TUI in a specific directory"
+    ],
+    [
+     "opencode run \"explain this repo\"",
+     "One-shot, non-interactive run"
+    ],
+    [
+     "opencode serve",
+     "Headless HTTP server for automation"
+    ],
+    [
+     "opencode web",
+     "Headless server with a browser UI"
+    ],
+    [
+     "opencode models",
+     "List every model your keys unlock"
+    ],
+    [
+     "opencode stats",
+     "Token usage and cost per session"
+    ],
+    [
+     "opencode auth login",
+     "Add a provider key"
+    ],
+    [
+     "opencode mcp add",
+     "Attach an MCP server"
+    ],
+    [
+     "opencode agent create",
+     "Generate a custom agent file"
+    ]
+   ],
+   "walkthroughs": [
+    "opencode-first-hour",
+    "opencode-free-models",
+    "opencode-automation",
+    "opencode-mcp"
+   ],
+   "accent": "green"
+  },
+  {
+   "id": "zen",
+   "name": "OpenCode Zen",
+   "tagline": "A curated model gateway - free models that are verified to work",
+   "kind": "Models",
+   "license": "Service",
+   "docs": "https://opencode.ai/console",
+   "repo": "https://opencode.ai/console",
+   "install": "/connect   # run inside opencode, then pick the opencode workspace",
+   "install_alt": "opencode auth login --provider opencode",
+   "install_windows": "same as macOS/Linux - /connect works the same in any terminal",
+   "best_for": "Running opencode without paying, on models the opencode team has actually tested.",
+   "highlights": [
+    "Nine free models on the OpenCode Zen free tier",
+    "Curated catalogue - every model is checked before it is listed",
+    "Optional Go / Go Plus subscriptions for open model access",
+    "Console workspace, usage tracking and budget controls",
+    "Works with the same agent, same commands, same config"
+   ],
+   "commands": [
+    [
+     "/connect",
+     "Pick a provider or the OpenCode Zen workspace"
+    ],
+    [
+     "opencode models opencode",
+     "List the Zen models available to your key"
+    ],
+    [
+     "opencode models --refresh",
+     "Refresh the model catalogue from models.dev"
+    ],
+    [
+     "opencode stats --models 5",
+     "See which models you actually burned tokens on"
+    ]
+   ],
+   "walkthroughs": [
+    "opencode-free-models"
+   ],
+   "accent": "cyan"
+  },
+  {
+   "id": "codex",
+   "name": "Codex CLI",
+   "tagline": "OpenAI's local coding agent, with sandboxing and approval modes",
+   "kind": "CLI",
+   "license": "Apache-2.0",
+   "docs": "https://developers.openai.com/codex",
+   "repo": "https://github.com/openai/codex",
+   "install": "npm install -g @openai/codex",
+   "install_alt": "brew install --cask codex",
+   "install_windows": "npm install -g @openai/codex",
+   "best_for": "Working inside a ChatGPT Plus/Pro plan, or driving OpenAI models from a script.",
+   "highlights": [
+    "Sign in with your ChatGPT plan - no separate API billing",
+    "Approval modes and sandboxing decide what it may touch",
+    "AGENTS.md for repo-wide instructions",
+    "codex exec for non-interactive runs",
+    "codex app for the desktop experience"
+   ],
+   "commands": [
+    [
+     "codex",
+     "Start the interactive agent"
+    ],
+    [
+     "codex app",
+     "Open the desktop app"
+    ],
+    [
+     "codex exec \"run the test suite\"",
+     "Non-interactive, scriptable run"
+    ],
+    [
+     "codex --full-auto",
+     "Auto-approve edits inside the sandbox"
+    ],
+    [
+     "codex --sandbox workspace-write",
+     "Choose the sandbox policy explicitly"
+    ],
+    [
+     "codex resume",
+     "Pick up a previous session"
+    ]
+   ],
+   "walkthroughs": [
+    "codex-cli"
+   ],
+   "accent": "violet"
+  },
+  {
+   "id": "gemini",
+   "name": "Gemini CLI / Antigravity",
+   "tagline": "Google's terminal agent - 1,500 free requests a day",
+   "kind": "CLI",
+   "license": "Apache-2.0",
+   "docs": "https://geminicli.com/docs/",
+   "repo": "https://github.com/google-gemini/gemini-cli",
+   "install": "npm install -g @google/gemini-cli",
+   "install_alt": "npx @google/gemini-cli",
+   "install_windows": "npm install -g @google/gemini-cli",
+   "best_for": "A genuinely free agent with a huge daily quota and a first-class free model tier.",
+   "highlights": [
+    "Free tier: ~1,500 requests/day on flash models, no credit card",
+    "Sign in with Google, use a Gemini API key, or point at Vertex AI",
+    "GEMINI.md carries project context across sessions",
+    "Headless modes with json and stream-json output",
+    "MCP servers configured in ~/.gemini/settings.json"
+   ],
+   "commands": [
+    [
+     "gemini",
+     "Start the interactive agent"
+    ],
+    [
+     "gemini -m gemini-2.5-flash",
+     "Pick the model explicitly"
+    ],
+    [
+     "gemini -p \"explain this repo\"",
+     "One-shot prompt, no TUI"
+    ],
+    [
+     "gemini -p \"...\" --output-format json",
+     "Machine-readable output for scripts"
+    ],
+    [
+     "gemini -p \"...\" --output-format stream-json",
+     "Newline-delimited JSON events"
+    ],
+    [
+     "gemini --include-directories ../lib",
+     "Add sibling directories to context"
+    ]
+   ],
+   "walkthroughs": [
+    "gemini-cli"
+   ],
+   "accent": "blue"
+  },
+  {
+   "id": "claude",
+   "name": "Claude Code",
+   "tagline": "Anthropic's agent: CLAUDE.md, hooks, subagents and MCP",
+   "kind": "CLI",
+   "license": "Proprietary",
+   "docs": "https://docs.anthropic.com/en/docs/claude-code/overview",
+   "repo": "https://github.com/anthropics/claude-code",
+   "install": "npm install -g @anthropic-ai/claude-code",
+   "install_alt": "curl -fsSL https://claude.ai/install.sh | bash",
+   "install_windows": "npm install -g @anthropic-ai/claude-code",
+   "best_for": "Long sessions where CLAUDE.md, subagents and hooks carry project knowledge.",
+   "highlights": [
+    "CLAUDE.md project instructions, generated with /init",
+    "Plan mode before any file is touched",
+    "MCP servers, custom slash commands, skills",
+    "Hooks run shell commands on tool events",
+    "Print mode for scripting: claude -p \"...\""
+   ],
+   "commands": [
+    [
+     "claude",
+     "Start the interactive session"
+    ],
+    [
+     "claude -p \"summarise this repo\"",
+     "One-shot print mode"
+    ],
+    [
+     "/init",
+     "Create CLAUDE.md from the codebase"
+    ],
+    [
+     "/compact",
+     "Summarise the conversation to free context"
+    ],
+    [
+     "/resume",
+     "Come back to an earlier session"
+    ],
+    [
+     "claude mcp add <name> <command>",
+     "Register an MCP server"
+    ]
+   ],
+   "walkthroughs": [
+    "claude-code"
+   ],
+   "accent": "orange"
+  },
+  {
+   "id": "aider",
+   "name": "Aider",
+   "tagline": "Git-native Python agent with a repo map and a two-model split",
+   "kind": "CLI",
+   "license": "Apache-2.0",
+   "docs": "https://aider.chat/docs/",
+   "repo": "https://github.com/Aider-AI/aider",
+   "install": "python -m pip install aider-install && aider-install",
+   "install_alt": "python -m pip install aider-chat",
+   "install_windows": "python -m pip install aider-install",
+   "best_for": "Pairing with a cheap editor model and an expensive architect model.",
+   "highlights": [
+    "Every change is a git commit you can inspect and revert",
+    "Repo map keeps context proportional to the code you touch",
+    "Architect / editor split: plan with a strong model, edit with a cheap one",
+    "Works with any OpenAI-compatible endpoint, including local models",
+    "In-chat commands: /add /ask /code /diff /undo /commit"
+   ],
+   "commands": [
+    [
+     "aider",
+     "Start in the current git repo"
+    ],
+    [
+     "aider --message \"add tests for auth\"",
+     "Start with a task already loaded"
+    ],
+    [
+     "aider --architect --model gpt-4.1",
+     "Split planning and editing across models"
+    ],
+    [
+     "/add src/api.py",
+     "Put a file in context"
+    ],
+    [
+     "/ask why is this here?",
+     "Question the code without editing it"
+    ],
+    [
+     "/diff",
+     "Review the pending changes"
+    ],
+    [
+     "/undo",
+     "Revert the last change"
+    ]
+   ],
+   "walkthroughs": [
+    "aider"
+   ],
+   "accent": "amber"
+  },
+  {
+   "id": "cursor",
+   "name": "Cursor",
+   "tagline": "The IDE that made agent-first editing normal",
+   "kind": "IDE",
+   "license": "Proprietary",
+   "docs": "https://docs.cursor.com/",
+   "repo": "https://github.com/getcursor/cursor",
+   "install": "Download the installer for your OS, then sign in",
+   "install_alt": "brew install --cask cursor",
+   "install_windows": "winget install --id Anysphere.Cursor -e",
+   "best_for": "Staying inside the editor: inline edit, Agent mode, background agents.",
+   "highlights": [
+    "Cmd/Ctrl+K inline edits, Agent mode for multi-file work",
+    "Background agents run in parallel on your repo",
+    ".cursor/rules for project rules, @Docs for external context",
+    "Model picker per agent, including your own API keys",
+    "Works with any codebase the agent can reach from the editor"
+   ],
+   "commands": [
+    [
+     "Cmd/Ctrl+K",
+     "Inline edit at the cursor"
+    ],
+    [
+     "Cmd/Ctrl+I",
+     "Open the Agent composer"
+    ],
+    [
+     "@Docs",
+     "Pull indexed documentation into context"
+    ],
+    [
+     ".cursor/rules/*.mdc",
+     "Project rules, referenced automatically"
+    ]
+   ],
+   "walkthroughs": [],
+   "accent": "pink"
+  },
+  {
+   "id": "cline",
+   "name": "Cline",
+   "tagline": "Open-source VS Code agent with Plan / Act and full MCP support",
+   "kind": "IDE",
+   "license": "Apache-2.0",
+   "docs": "https://docs.cline.bot/",
+   "repo": "https://github.com/cline/cline",
+   "install": "Install the 'Cline' extension from the VS Code marketplace",
+   "install_alt": "code --install-extension saoudrizwan.claude-dev",
+   "install_windows": "code --install-extension saoudrizwan.claude-dev",
+   "best_for": "Transparency: every action, diff and token cost is shown before you approve it.",
+   "highlights": [
+    "Plan / Act split - you approve a plan before any edit",
+    "Checkpoints restore the workspace state",
+    "MCP servers for any external tool",
+    "Bring your own key (Anthropic, OpenAI, OpenRouter, local)",
+    "Fully open source and auditable"
+   ],
+   "commands": [
+    [
+     "Plan -> Act",
+     "Approve the plan, then let it execute"
+    ],
+    [
+     "MCP Servers panel",
+     "Add and enable external tools"
+    ],
+    [
+     "Checkpoints",
+     "Roll the workspace back to any earlier point"
+    ]
+   ],
+   "walkthroughs": [],
+   "accent": "sky"
+  },
+  {
+   "id": "roo",
+   "name": "Roo Code",
+   "tagline": "A Cline fork with custom modes and parallel task orchestration",
+   "kind": "IDE",
+   "license": "Apache-2.0",
+   "docs": "https://docs.roocode.com/",
+   "repo": "https://github.com/RooCodeInc/Roo-Code",
+   "install": "Install the 'Roo Code' extension from the VS Code marketplace",
+   "install_alt": "code --install-extension RooVeterinaryInc.roo-cline",
+   "install_windows": "code --install-extension RooVeterinaryInc.roo-cline",
+   "best_for": "Splitting a big feature into parallel boomerang subtasks.",
+   "highlights": [
+    "Custom modes: Architect, Code, Ask, Debug, Orchestrator",
+    "Boomerang tasks - subtasks that come back to the parent",
+    "Per-mode model, temperature and tool permissions",
+    "MCP servers, custom instructions and Boomerang workflows",
+    "VS Code and Roo Code Cloud both supported"
+   ],
+   "commands": [
+    [
+     "/mode architect",
+     "Switch the active mode"
+    ],
+    [
+     "New Task",
+     "Start a subtask that returns a result"
+    ],
+    [
+     "Boomerang Tasks",
+     "Launch parallel work from the Orchestrator mode"
+    ]
+   ],
+   "walkthroughs": [],
+   "accent": "emerald"
+  },
+  {
+   "id": "windsurf",
+   "name": "Windsurf",
+   "tagline": "Cascade, an IDE agent that keeps context across your whole session",
+   "kind": "IDE",
+   "license": "Proprietary",
+   "docs": "https://docs.windsurf.com/",
+   "repo": "https://github.com/windsurf-ai",
+   "install": "Download the installer for your OS, then sign in",
+   "install_alt": "brew install --cask windsurf",
+   "install_windows": "winget install -e --id Windsurf.Windsurf",
+   "best_for": "Long IDE sessions where you want the agent to remember the thread.",
+   "highlights": [
+    "Cascade flows across files, terminal and browser",
+    "Memories and rules persist your conventions",
+    "Windsurf Rules with activation globs",
+    "Previews show every edit before it lands",
+    "Local models available for private codebases"
+   ],
+   "commands": [
+    [
+     "Cascade",
+     "The agent panel - your whole request lives here"
+    ],
+    [
+     "@mention",
+     "Pull files and docs into context"
+    ],
+    [
+     ".windsurf/rules/*.md",
+     "Rule files with activation patterns"
+    ]
+   ],
+   "walkthroughs": [],
+   "accent": "teal"
+  },
+  {
+   "id": "continue",
+   "name": "Continue",
+   "title": "Continue",
+   "tagline": "Open-source IDE assistant and CLI, configurable end to end",
+   "kind": "IDE + CLI",
+   "license": "Apache-2.0",
+   "docs": "https://docs.continue.dev/",
+   "repo": "https://github.com/continuedev/continue",
+   "install": "Install the 'Continue' extension from the VS Code marketplace",
+   "install_alt": "npm install -g @continuedev/cli",
+   "install_windows": "npm install -g @continuedev/cli",
+   "best_for": "Teams that want their model configuration in version control.",
+   "highlights": [
+    "config.yaml holds models, roles, rules and MCP servers",
+    "Tab autocomplete, chat, edit and agent modes",
+    "Roles: chat, edit, apply, summarize - each with its own model",
+    "Local models via Ollama, LM Studio and llama.cpp",
+    "Fully open source, every prompt visible"
+   ],
+   "commands": [
+    [
+     "config.yaml",
+     "Models, roles, rules and MCP in one file"
+    ],
+    [
+     "/help",
+     "Chat commands inside the IDE panel"
+    ],
+    [
+     "@docs",
+     "Attach indexed documentation"
+    ]
+   ],
+   "walkthroughs": [],
+   "accent": "indigo"
+  },
+  {
+   "id": "goose",
+   "name": "Goose",
+   "tagline": "Block's open-source local agent, extended entirely through MCP",
+   "kind": "CLI + Desktop",
+   "license": "Apache-2.0",
+   "docs": "https://block.github.io/goose/docs/",
+   "repo": "https://github.com/block/goose",
+   "install": "curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash",
+   "install_alt": "pip install goose-ai   # or brew install block/goose",
+   "install_windows": "winget install --id Block.Goose",
+   "best_for": "Automating real work - scheduling, tickets, databases - through MCP recipes.",
+   "highlights": [
+    "Everything is an MCP extension: file tools, browser, dev tools",
+    "Recipes are shareable YAML workflows",
+    "Runs locally against any model you point it at",
+    "Desktop app and CLI share the same extensions",
+    "Built for repeatable multi-step work, not one-off chat"
+   ],
+   "commands": [
+    [
+     "goose session start",
+     "Begin an interactive session"
+    ],
+    [
+     "goose session list",
+     "See previous sessions"
+    ],
+    [
+     "goose recipe run <recipe>",
+     "Execute a saved workflow"
+    ],
+    [
+     "goose mcp list",
+     "Show the extensions and their tools"
+    ]
+   ],
+   "walkthroughs": [],
+   "accent": "lime"
+  },
+  {
+   "id": "openhands",
+   "name": "OpenHands",
+   "tagline": "An open-source platform for agents that act on a machine",
+   "kind": "Platform",
+   "license": "MIT",
+   "docs": "https://docs.openhands.dev/",
+   "repo": "https://github.com/All-Hands-AI/OpenHands",
+   "install": "pip install openhands-ai && openhands",
+   "install_alt": "docker pull ghcr.io/all-hands-ai/openhands",
+   "install_windows": "pip install openhands-ai",
+   "best_for": "Running agents in a container, on a server, or in CI.",
+   "highlights": [
+    "Sandboxed runtime for every session",
+    "Web UI plus a REST API for automation",
+    "Agent micro-agents for micro-tasks inside a session",
+    "Works with any model endpoint",
+    "Designed to be deployed, not just used locally"
+   ],
+   "commands": [
+    [
+     "openhands",
+     "Start the local server and open the UI"
+    ],
+    [
+     "openhands --headless",
+     "Run without the browser interface"
+    ],
+    [
+     "POST /api/conversations",
+     "Drive sessions from your own code"
+    ]
+   ],
+   "walkthroughs": [],
+   "accent": "fuchsia"
+  },
+  {
+   "id": "openclaw",
+   "name": "openclaw",
+   "tagline": "The most-starred personal agent on GitHub - it actually does things, on any OS",
+   "kind": "CLI",
+   "license": "MIT",
+   "docs": "https://openclaw.ai",
+   "repo": "https://github.com/openclaw/openclaw",
+   "stars": "392k",
+   "install": "See the repository README - the install command moves between releases",
+   "install_alt": "git clone https://github.com/openclaw/openclaw",
+   "install_windows": "same as Linux/macOS - it is a Node or binary install",
+   "best_for": "A personal agent that runs scheduled, real-world tasks instead of sitting in a terminal waiting for you.",
+   "highlights": [
+    "392k stars - the biggest project in the agent space right now",
+    "Cross-platform: the same agent on Windows, macOS and Linux",
+    "Built for tasks that act on the world, not just edit files",
+    "MIT licensed and fully open source"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "coral",
+   "verified": false
+  },
+  {
+   "id": "pi",
+   "name": "pi",
+   "tagline": "The harness as a library: unified LLM API, agent loop, TUI and coding agent CLI",
+   "kind": "CLI",
+   "license": "MIT",
+   "docs": "https://github.com/earendil-works/pi",
+   "repo": "https://github.com/earendil-works/pi",
+   "stars": "116k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/earendil-works/pi",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Learning what a harness actually is - the loop, the tools and the TUI are all readable.",
+   "highlights": [
+    "Four pieces in one repo: LLM API, agent loop, TUI, coding CLI",
+    "The shortest path to understanding what happens between prompt and edit",
+    "Unified LLM layer so you can swap providers in one place",
+    "MIT licensed"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "slate",
+   "verified": false
+  },
+  {
+   "id": "hermes",
+   "name": "hermes-agent",
+   "tagline": "The agent that grows with you - persistence and memory are the product",
+   "kind": "CLI",
+   "license": "MIT",
+   "docs": "https://github.com/NousResearch/hermes-agent",
+   "repo": "https://github.com/NousResearch/hermes-agent",
+   "stars": "255k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/NousResearch/hermes-agent",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Long-running assistants that should remember what they learned instead of starting from zero each session.",
+   "highlights": [
+    "255k stars and backed by Nous Research",
+    "Designed around persistence across sessions",
+    "Memory is a first-class layer, not a feature",
+    "MIT licensed"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "amber",
+   "verified": false
+  },
+  {
+   "id": "little-coder",
+   "name": "little-coder",
+   "tagline": "A harness engineered for small models - proof the harness does most of the work",
+   "kind": "CLI",
+   "license": "Apache-2.0",
+   "docs": "https://github.com/itayinbarr/little-coder",
+   "repo": "https://github.com/itayinbarr/little-coder",
+   "stars": "2.7k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/itayinbarr/little-coder",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Running a real agent on a 7B-class model - locally, on a budget, without a frontier key.",
+   "highlights": [
+    "Optimised for small language models and tool use",
+    "Benchmarks against terminal agent suites",
+    "Ollama and Qwen in the loop",
+    "Apache-2.0 licensed"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "lime",
+   "verified": false
+  },
+  {
+   "id": "late-cli",
+   "name": "late-cli",
+   "tagline": "High-performance agent for long-horizon tasks and local models",
+   "kind": "CLI",
+   "license": "MIT",
+   "docs": "https://github.com/mlhher/late-cli",
+   "repo": "https://github.com/mlhher/late-cli",
+   "stars": "446",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/mlhher/late-cli",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Tasks that take hours, and stacks where the code never leaves your machine.",
+   "highlights": [
+    "Built for long-horizon runs rather than one-shot prompts",
+    "Local model paths are first class",
+    "Backed by empirical research on agent behaviour",
+    "MIT licensed"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "indigo",
+   "verified": false
+  },
+  {
+   "id": "alphacode",
+   "name": "alphacode",
+   "tagline": "A free MIT coding agent that needs no API key at all",
+   "kind": "CLI",
+   "license": "MIT",
+   "docs": "https://github.com/dragonked2/alphacode",
+   "repo": "https://github.com/dragonked2/alphacode",
+   "stars": "369",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/dragonked2/alphacode",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Feeling the loop before you spend anything - built-in free model, or bring your own key.",
+   "highlights": [
+    "No API key required to start",
+    "Bring Claude, GPT, Gemini or DeepSeek if you want to",
+    "MIT licensed and deliberately simple",
+    "Good first agent to read if you want to see the whole loop"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "mint",
+   "verified": false
+  },
+  {
+   "id": "org2",
+   "name": "ORG2",
+   "tagline": "System of record for how agents build software - a Rust harness and 20+ CLIs",
+   "kind": "Platform",
+   "license": "AGPL-3.0",
+   "docs": "https://github.com/org2AI/ORG2",
+   "repo": "https://github.com/org2AI/ORG2",
+   "stars": "2.6k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/org2AI/ORG2",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Teams where several agents touch one repo and the history has to be queryable.",
+   "highlights": [
+    "Every agent action becomes a structured, queryable artifact",
+    "Built-in Rust harness plus adapters for 20+ CLIs",
+    "Local-first and self-hosted",
+    "Reliability engineering treated as a first-class concern"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "rose",
+   "verified": false
+  },
+  {
+   "id": "agent-deck",
+   "name": "agent-deck",
+   "tagline": "A terminal session manager for AI coding agents - one TUI for all of them",
+   "kind": "Terminal",
+   "license": "MIT",
+   "docs": "https://github.com/asheshgoplani/agent-deck",
+   "repo": "https://github.com/asheshgoplani/agent-deck",
+   "stars": "1.1k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/asheshgoplani/agent-deck",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Running several agents at once and switching between them without losing context.",
+   "highlights": [
+    "Hosts sessions from Claude, Gemini, opencode, Codex and more",
+    "One TUI instead of five terminal tabs",
+    "Session switching that keeps each agent's state intact",
+    "MIT licensed"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "teal",
+   "verified": false
+  },
+  {
+   "id": "atlas",
+   "name": "atlas",
+   "tagline": "Source control for agents - run several coding agents, track their changes, query them later",
+   "kind": "Platform",
+   "license": "Apache-2.0",
+   "docs": "https://github.com/pacifio/atlas",
+   "repo": "https://github.com/pacifio/atlas",
+   "stars": "9.6k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/pacifio/atlas",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Parallel agents on one repo, where you need to know who changed what.",
+   "highlights": [
+    "Git-like model for agent work: branches, diffs, history",
+    "Query what any agent did and when",
+    "Self-hosted, Rust, 9.6k stars",
+    "Spans opencode, Codex, Claude Code and Kilo Code"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "copper",
+   "verified": false
+  },
+  {
+   "id": "nimbalyst",
+   "name": "nimbalyst",
+   "tagline": "An open-source visual workspace for Claude Code, Codex and opencode",
+   "kind": "Workspace",
+   "license": "MIT",
+   "docs": "https://github.com/nimbalyst/nimbalyst",
+   "repo": "https://github.com/nimbalyst/nimbalyst",
+   "stars": "1.9k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/nimbalyst/nimbalyst",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Seeing several agents work the same backlog at the same time.",
+   "highlights": [
+    "Runs multiple coding agents side by side in one workspace",
+    "Visual board instead of a wall of terminals",
+    "Open source and self-hostable",
+    "Claude Code, Codex and opencode in one view"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "sky",
+   "verified": false
+  },
+  {
+   "id": "amux",
+   "name": "amux",
+   "tagline": "An open-source control plane for AI coding agents - run an AI engineering team",
+   "kind": "Platform",
+   "license": "MIT",
+   "docs": "https://github.com/mixpeek/amux",
+   "repo": "https://github.com/mixpeek/amux",
+   "stars": "545",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/mixpeek/amux",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Fan-out: one backlog, several agents, one place to see the results.",
+   "highlights": [
+    "Parallel Claude Code, Codex and opencode against one backlog",
+    "Control plane rather than another agent",
+    "Open source and self-hosted",
+    "Designed for team-shaped work, not single tasks"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "grape",
+   "verified": false
+  },
+  {
+   "id": "claudexor",
+   "name": "claudexor",
+   "tagline": "Multi-harness control plane with quota-aware rotation across providers",
+   "kind": "Platform",
+   "license": "MIT",
+   "docs": "https://github.com/razzant/claudexor",
+   "repo": "https://github.com/razzant/claudexor",
+   "stars": "515",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/razzant/claudexor",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Teams with several provider keys and hard rate limits.",
+   "highlights": [
+    "One control plane over Claude Code, Codex, Cursor and opencode",
+    "Quota-aware rotation when one provider runs out",
+    "Keeps the harness you already use",
+    "Open source"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "sunset",
+   "verified": false
+  },
+  {
+   "id": "cc-switch",
+   "name": "cc-switch",
+   "tagline": "A cross-platform desktop switcher for Claude Code, Codex, opencode, openclaw and more",
+   "kind": "Desktop",
+   "license": "MIT",
+   "docs": "https://github.com/farion1231/cc-switch",
+   "repo": "https://github.com/farion1231/cc-switch",
+   "stars": "146k",
+   "install": "Download the installer for your OS, then point it at your configs",
+   "install_alt": "See the repository for the Linux and macOS packages",
+   "install_windows": "Windows installer build from the releases page",
+   "best_for": "Switching provider keys and endpoints without editing config files by hand.",
+   "highlights": [
+    "146k stars - the biggest desktop manager in this space",
+    "Manages keys and endpoints for every major CLI agent",
+    "One place to see which provider each agent is pointed at",
+    "Windows, macOS and Linux"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "sapphire",
+   "verified": false
+  },
+  {
+   "id": "cli-continues",
+   "name": "cli-continues",
+   "tagline": "Resume an AI coding session in a different tool",
+   "kind": "Bridge",
+   "license": "MIT",
+   "docs": "https://github.com/yigitkonur/cli-continues",
+   "repo": "https://github.com/yigitkonur/cli-continues",
+   "stars": "1.5k",
+   "install": "See the repository README for the current install command",
+   "install_alt": "git clone https://github.com/yigitkonur/cli-continues",
+   "install_windows": "same as Linux/macOS",
+   "best_for": "Picking up where another tool left off without losing the thread.",
+   "highlights": [
+    "Hands a conversation from Claude Code to Copilot, Gemini, Codex or Cursor",
+    "Sessions become portable artifacts",
+    "Open source",
+    "Useful when a task needs a different model's strengths"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "moss",
+   "verified": false
+  },
+  {
+   "id": "history-viewer",
+   "name": "claude-code-history-viewer",
+   "tagline": "Browse, search and analyse your agent history - offline",
+   "kind": "Analytics",
+   "license": "MIT",
+   "docs": "https://github.com/jhlee0409/claude-code-history-viewer",
+   "repo": "https://github.com/jhlee0409/claude-code-history-viewer",
+   "stars": "2.2k",
+   "install": "Download the desktop build, or run the server from source",
+   "install_alt": "git clone https://github.com/jhlee0409/claude-code-history-viewer",
+   "install_windows": "Windows build from the releases page",
+   "best_for": "Finding the session where the agent went wrong, and measuring what you actually spend.",
+   "highlights": [
+    "Reads Claude Code, Codex CLI, Copilot, Gemini CLI, Cursor and opencode history",
+    "100% offline - nothing leaves the machine",
+    "Search and analyse across every tool",
+    "Tauri desktop app plus a web server"
+   ],
+   "commands": [],
+   "walkthroughs": [],
+   "accent": "steel",
+   "verified": false
+  }
+ ],
+ "walkthroughs": [
+  {
+   "id": "opencode-first-hour",
+   "title": "Your first hour in opencode",
+   "agent": "opencode",
+   "level": "beginner",
+   "duration_min": 45,
+   "summary": "From nothing to a committed, verified change. Install, connect a provider, teach the agent about your repo with AGENTS.md, plan before it writes, then check the work like a reviewer.",
+   "outcome": [
+    "opencode installed and pointed at a provider",
+    "An AGENTS.md that describes your repo",
+    "A plan you approved before a single file changed",
+    "A verified change, a clean diff, and a commit"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Install the agent",
+     "narration": "opencode is a single binary. The install script is the shortest path on macOS and Linux; on Windows use npm or Scoop, or run it inside WSL for the best experience.",
+     "command": "curl -fsSL https://opencode.ai/install | bash",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "# macOS / Linux"
+      },
+      {
+       "type": "input",
+       "text": "curl -fsSL https://opencode.ai/install | bash"
+      },
+      {
+       "type": "output",
+       "text": "  installing opencode..."
+      },
+      {
+       "type": "success",
+       "text": "  opencode installed  ->  ~/.opencode/bin/opencode"
+      },
+      {
+       "type": "muted",
+       "text": "# Windows (PowerShell)"
+      },
+      {
+       "type": "input",
+       "text": "npm install -g opencode-ai"
+      },
+      {
+       "type": "success",
+       "text": "  added 1 package in 4s"
+      },
+      {
+       "type": "muted",
+       "text": "# or: scoop install opencode"
+      }
+     ],
+     "tip": "Check it with `opencode --version`. If the shell says 'command not found', restart the terminal so the new PATH is picked up."
+    },
+    {
+     "id": "s2",
+     "title": "Connect a provider",
+     "narration": "The agent needs a model. Run /connect inside the TUI and pick a provider. If you want the free curated models, choose the opencode workspace - that is OpenCode Zen.",
+     "command": "opencode",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode"
+      },
+      {
+       "type": "muted",
+       "text": "  opencode v1.0.0  |  type /help for commands"
+      },
+      {
+       "type": "accent",
+       "text": "/connect"
+      },
+      {
+       "type": "output",
+       "text": "  Select a provider"
+      },
+      {
+       "type": "output",
+       "text": "    opencode        OpenCode Zen - curated + free models"
+      },
+      {
+       "type": "output",
+       "text": "    anthropic      Claude"
+      },
+      {
+       "type": "output",
+       "text": "    openai         GPT"
+      },
+      {
+       "type": "output",
+       "text": "    groq           Llama / Qwen (free tier)"
+      },
+      {
+       "type": "output",
+       "text": "    ollama         Local models"
+      },
+      {
+       "type": "output",
+       "text": "  -> opencode"
+      },
+      {
+       "type": "muted",
+       "text": "  opening https://opencode.ai/auth ..."
+      },
+      {
+       "type": "success",
+       "text": "  provider connected  |  opencode/zen"
+      }
+     ],
+     "tip": "Keys are stored in ~/.local/share/opencode/auth.json. You can also set them as environment variables or in a .env file in the project."
+    },
+    {
+     "id": "s3",
+     "title": "Teach it about the repo",
+     "narration": "/init scans the repo and writes an AGENTS.md: build and test commands, layout, and the conventions a future session would otherwise have to rediscover. Commit it - this file is the difference between a useful agent and a confused one.",
+     "command": "/init",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "/init"
+      },
+      {
+       "type": "tool",
+       "text": "  Read(24)  scanning project structure"
+      },
+      {
+       "type": "tool",
+       "text": "  Grep(6)   finding test and build commands"
+      },
+      {
+       "type": "output",
+       "text": "  Wrote AGENTS.md"
+      },
+      {
+       "type": "output",
+       "text": "    | backend/   FastAPI service, pytest suite"
+      },
+      {
+       "type": "output",
+       "text": "    | frontend/  React 19 + Vite, npm run build"
+      },
+      {
+       "type": "output",
+       "text": "    | commands   pytest -q  |  npm run lint  |  npm run build"
+      }
+     ],
+     "tip": "Keep AGENTS.md short and factual: commands, layout, and the three rules a new contributor would get wrong."
+    },
+    {
+     "id": "s4",
+     "title": "Ask before you change anything",
+     "narration": "Reference files with @ (fuzzy search across the project) and ask how something works before you ask for a change. The agent reads the file for you - you never paste code it can open itself.",
+     "command": "How is auth handled in @backend/app/core/security.py?",
+     "lines": [
+      {
+       "type": "input",
+       "text": "How is auth handled in @backend/app/core/security.py?"
+      },
+      {
+       "type": "tool",
+       "text": "  Read(1)   backend/app/core/security.py"
+      },
+      {
+       "type": "output",
+       "text": "  Tokens are signed with HMAC-SHA256 and verified in the"
+      },
+      {
+       "type": "output",
+       "text": "  dependency `require_user`, which is injected into every"
+      },
+      {
+       "type": "output",
+       "text": "  route. Refresh tokens live in the `sessions` table and"
+      },
+      {
+       "type": "output",
+       "text": "  rotate on every refresh."
+      }
+     ],
+     "tip": "The same @-syntax works inside custom commands and inside AGENTS.md."
+    },
+    {
+     "id": "s5",
+     "title": "Plan mode first",
+     "narration": "Press Tab to switch to Plan mode. The agent can read and search but every write and every shell command asks first. Give it the requirement and the shape of the solution, then push back on the plan while it is still cheap to change.",
+     "command": "Tab  ->  Plan mode",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  [tab] switched to plan mode"
+      },
+      {
+       "type": "input",
+       "text": "Add a GET /health endpoint that returns {\"status\":\"ok\"} and a test for it."
+      },
+      {
+       "type": "output",
+       "text": "  Plan"
+      },
+      {
+       "type": "output",
+       "text": "   1. add GET /health in backend/app/api/routes/health.py"
+      },
+      {
+       "type": "output",
+       "text": "   2. return {\"status\": \"ok\", \"version\": ...}"
+      },
+      {
+       "type": "output",
+       "text": "   3. add tests/test_health.py asserting status == 200"
+      },
+      {
+       "type": "output",
+       "text": "   4. run pytest -q to verify"
+      },
+      {
+       "type": "muted",
+       "text": "  no files changed in plan mode"
+      }
+     ],
+     "tip": "Plans are cheap to argue with and expensive to discover after the code is written. Plan first, build second."
+    },
+    {
+     "id": "s6",
+     "title": "Build it",
+     "narration": "Switch back with Tab and say go. The agent writes the files, then runs the test suite to prove the change works - it should not need to be told twice.",
+     "command": "Tab  ->  Build mode  |  \"go ahead\"",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  [tab] switched to build mode"
+      },
+      {
+       "type": "input",
+       "text": "go ahead"
+      },
+      {
+       "type": "tool",
+       "text": "  Read(2)   backend/app/api/routes/health.py"
+      },
+      {
+       "type": "tool",
+       "text": "  Edit(2)   backend/app/api/routes/health.py"
+      },
+      {
+       "type": "tool",
+       "text": "  Write(1)  backend/tests/test_health.py"
+      },
+      {
+       "type": "tool",
+       "text": "  Bash(1)   pytest -q"
+      },
+      {
+       "type": "output",
+       "text": "  28 passed in 1.9s"
+      },
+      {
+       "type": "success",
+       "text": "  ok /health returns 200 with status ok"
+      }
+     ],
+     "tip": "If it stops halfway, say what remains: 'run the tests again and fix whatever fails'."
+    },
+    {
+     "id": "s7",
+     "title": "Review like a human",
+     "narration": "The agent's claim that it works is not evidence - the diff is. Read what changed, check it matches the plan, and ask for a different approach if it drifted.",
+     "command": "git diff",
+     "lines": [
+      {
+       "type": "input",
+       "text": "git diff"
+      },
+      {
+       "type": "diff",
+       "text": "+ @router.get(\"/health\")"
+      },
+      {
+       "type": "diff",
+       "text": "+ async def health() -> dict:"
+      },
+      {
+       "type": "diff",
+       "text": "+     return {\"status\": \"ok\", \"version\": __version__}"
+      },
+      {
+       "type": "diff",
+       "text": "+ def test_health(client):"
+      },
+      {
+       "type": "diff",
+       "text": "+     assert client.get(\"/api/health\").json()[\"status\"] == \"ok\""
+      },
+      {
+       "type": "muted",
+       "text": "  2 files changed, 7 insertions"
+      }
+     ],
+     "tip": "If the diff shows scope you did not ask for, say so - agents will happily widen the change."
+    },
+    {
+     "id": "s8",
+     "title": "Undo without fear",
+     "narration": "/undo reverts the last message and its file changes using git, so a bad turn costs you one keystroke. /redo brings it back. Commit once the diff is what you want.",
+     "command": "/undo",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "/undo"
+      },
+      {
+       "type": "muted",
+       "text": "  reverted 2 file changes and the last message"
+      },
+      {
+       "type": "accent",
+       "text": "/redo"
+      },
+      {
+       "type": "muted",
+       "text": "  restored 2 file changes"
+      },
+      {
+       "type": "accent",
+       "text": "/new"
+      },
+      {
+       "type": "success",
+       "text": "  session started"
+      }
+     ],
+     "tip": "Undo needs a git repository. Initialise one before you start - /undo and /redo both rely on it."
+    }
+   ]
+  },
+  {
+   "id": "opencode-free-models",
+   "title": "Run the whole thing on free models",
+   "agent": "zen",
+   "level": "beginner",
+   "duration_min": 30,
+   "summary": "OpenCode Zen is a curated catalogue of models the opencode team has actually tested, with a free tier. This session shows how to see what your key unlocks, how to route cheap models to planning and strong models to writing, and how to watch what it costs.",
+   "outcome": [
+    "A free model running inside opencode",
+    "Different models per agent (plan vs build)",
+    "A live view of token spend per model"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Connect the Zen workspace",
+     "narration": "Run /connect and choose opencode. You get a key from opencode.ai/auth - the free models do not need a credit card.",
+     "command": "/connect",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "/connect"
+      },
+      {
+       "type": "output",
+       "text": "  -> opencode (OpenCode Zen)"
+      },
+      {
+       "type": "success",
+       "text": "  provider connected  |  opencode/zen"
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "title": "See what your key unlocks",
+     "narration": "opencode models lists everything reachable with the keys you have configured. Filter by provider, and refresh the cache when a provider ships new models.",
+     "command": "opencode models opencode",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode models opencode"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/minimax-m2.5-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/mimo-v2.5-pro-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/mimo-v2.5-omni-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/mimo-v2.5-flash-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/deepseek-v4-flash-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/nemotron-3-ultra-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/nemotron-3-super-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/qwen-3.6-plus-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/trinity-large-preview-free"
+      },
+      {
+       "type": "output",
+       "text": "  opencode/north-mini-code-free"
+      }
+     ],
+     "tip": "Model ids are provider/model - that exact string is what goes in opencode.json and in --model."
+    },
+    {
+     "id": "s3",
+     "title": "Switch models mid-session",
+     "narration": "Press /models in the TUI to pick a different model without losing the conversation. Switch to a cheap model for exploration and a strong one when it is time to write code.",
+     "command": "/models",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "/models"
+      },
+      {
+       "type": "output",
+       "text": "  select a model"
+      },
+      {
+       "type": "output",
+       "text": "   > opencode/mimo-v2.5-pro-free"
+      },
+      {
+       "type": "output",
+       "text": "     opencode/minimax-m2.5-free"
+      },
+      {
+       "type": "output",
+       "text": "     opencode/qwen-3.6-plus-free"
+      },
+      {
+       "type": "success",
+       "text": "  model set  |  opencode/mimo-v2.5-pro-free"
+      }
+     ],
+     "tip": "Free tiers have tighter rate limits. If you hit a 429, wait a minute or switch to a local model."
+    },
+    {
+     "id": "s4",
+     "title": "Route models per agent",
+     "narration": "This is the highest-leverage config in the whole tool. Give the plan agent a small fast model and the build agent a strong one - the plan rarely needs frontier reasoning and the build always does.",
+     "command": "opencode.json",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  // opencode.json"
+      },
+      {
+       "type": "accent",
+       "text": "  {"
+      },
+      {
+       "type": "accent",
+       "text": "    \"$schema\": \"https://opencode.ai/config.json\","
+      },
+      {
+       "type": "accent",
+       "text": "    \"agent\": {"
+      },
+      {
+       "type": "accent",
+       "text": "      \"plan\":  { \"model\": \"opencode/mimo-v2.5-flash-free\" },"
+      },
+      {
+       "type": "accent",
+       "text": "      \"build\": { \"model\": \"opencode/mimo-v2.5-pro-free\" }"
+      },
+      {
+       "type": "accent",
+       "text": "    }"
+      },
+      {
+       "type": "accent",
+       "text": "  }"
+      }
+     ],
+     "tip": "Same trick for review: a read-only subagent on a cheap model catches most issues before the strong model ever runs."
+    },
+    {
+     "id": "s5",
+     "title": "Watch the spend",
+     "narration": "opencode stats breaks token usage and cost down by model and by tool, so you can see which model is actually doing the work - and which one is burning tokens on retries.",
+     "command": "opencode stats --models 5",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode stats --models 5"
+      },
+      {
+       "type": "output",
+       "text": "  sessions      12"
+      },
+      {
+       "type": "output",
+       "text": "  tokens        1.42M in  |  218K out"
+      },
+      {
+       "type": "output",
+       "text": "  cost          $0.38"
+      },
+      {
+       "type": "output",
+       "text": "  by model"
+      },
+      {
+       "type": "output",
+       "text": "    opencode/mimo-v2.5-pro-free     640K in   $0.21"
+      },
+      {
+       "type": "output",
+       "text": "    opencode/mimo-v2.5-flash-free    512K in   $0.09"
+      },
+      {
+       "type": "output",
+       "text": "    anthropic/claude-sonnet-4-5      268K in   $0.08"
+      }
+     ],
+     "tip": "If one model dominates the token count, it is usually the one being asked to re-read the whole repo. Fix the prompt, not the plan."
+    },
+    {
+     "id": "s6",
+     "title": "Keep your own key too",
+     "narration": "Zen is great for free volume, but you will sometimes want a frontier model. Adding a second provider is one command - and both stay available in the same session.",
+     "command": "opencode auth login",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode auth login"
+      },
+      {
+       "type": "output",
+       "text": "  select a provider  ->  anthropic"
+      },
+      {
+       "type": "output",
+       "text": "  paste your key"
+      },
+      {
+       "type": "success",
+       "text": "  authenticated  |  anthropic"
+      },
+      {
+       "type": "input",
+       "text": "opencode auth list"
+      },
+      {
+       "type": "output",
+       "text": "  anthropic   anthropic/claude-sonnet-4-5"
+      },
+      {
+       "type": "output",
+       "text": "  opencode    opencode/mimo-v2.5-pro-free"
+      }
+     ],
+     "tip": "Use the free catalogue for volume work - bulk refactors, test writing, docs - and a paid key for the hard reasoning."
+    }
+   ]
+  },
+  {
+   "id": "opencode-automation",
+   "title": "Automate opencode: run, serve, attach",
+   "agent": "opencode",
+   "level": "intermediate",
+   "duration_min": 40,
+   "summary": "The TUI is only one client. opencode run gives you a one-shot agent, opencode serve exposes the whole thing over HTTP, and opencode attach connects any client to a running server - which is how you put an agent in CI.",
+   "outcome": [
+    "A scriptable one-shot agent",
+    "A headless server you can drive from anywhere",
+    "A CI job that reviews a pull request"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "One-shot runs",
+     "narration": "opencode run takes a prompt and exits. Attach files with --file, pick a model with --model, and use --auto to approve anything that is not explicitly denied.",
+     "command": "opencode run \"summarise the diff in 5 bullets\" --format json",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode run \"summarise the diff in 5 bullets\" --format json"
+      },
+      {
+       "type": "output",
+       "text": "  {"
+      },
+      {
+       "type": "output",
+       "text": "    \"type\": \"text\","
+      },
+      {
+       "type": "output",
+       "text": "    \"text\": \"* adds a /health route...\","
+      },
+      {
+       "type": "output",
+       "text": "    \"sessionID\": \"ses_8f21c4\""
+      },
+      {
+       "type": "output",
+       "text": "  }"
+      }
+     ],
+     "tip": "--format json emits raw JSON events, which is what you want when a script has to parse the result."
+    },
+    {
+     "id": "s2",
+     "title": "Drive it from a shell script",
+     "narration": "Because the output is JSON, the agent becomes a normal Unix building block: pipe it through jq, fail a build on a bad review, or post a comment.",
+     "command": "opencode run \"review this diff for security bugs\" --format json | jq -r '.text'",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode run \"review this diff for security bugs\" --format json | jq -r '.text'"
+      },
+      {
+       "type": "output",
+       "text": "  ! backend/app/api/routes/files.py:42 - path is used without normalisation"
+      },
+      {
+       "type": "output",
+       "text": "  ! backend/app/core/security.py:88 - token compared with == instead of constant time"
+      },
+      {
+       "type": "success",
+       "text": "  exit code 0  |  2 findings"
+      }
+     ],
+     "tip": "Give it the diff explicitly with --file, or run it inside the repo so its tools can see the working tree."
+    },
+    {
+     "id": "s3",
+     "title": "Start a headless server",
+     "narration": "opencode serve runs the whole agent as an HTTP service. This is the piece that makes everything else composable: web UI, mobile client, or your own tooling.",
+     "command": "opencode serve --port 4096",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode serve --port 4096"
+      },
+      {
+       "type": "output",
+       "text": "  opencode server listening on http://127.0.0.1:4096"
+      },
+      {
+       "type": "muted",
+       "text": "  set OPENCODE_SERVER_PASSWORD to require basic auth"
+      }
+     ],
+     "tip": "Never expose this to a public network without a password. It can edit files and run commands."
+    },
+    {
+     "id": "s4",
+     "title": "Attach instead of restarting",
+     "narration": "Every cold start re-boots your MCP servers, which is slow. Attaching to a running server keeps them warm - the TUI on one machine, the agent backend on another.",
+     "command": "opencode attach http://127.0.0.1:4096",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode attach http://127.0.0.1:4096"
+      },
+      {
+       "type": "output",
+       "text": "  connected  |  session list: 4"
+      },
+      {
+       "type": "muted",
+       "text": "  mcp servers reused from the running backend (no cold boot)"
+      }
+     ],
+     "tip": "The same trick works for scripted runs: opencode run --attach http://127.0.0.1:4096 \"...\""
+    },
+    {
+     "id": "s5",
+     "title": "Put it in CI",
+     "narration": "A pipeline job can call opencode run, fail the build on a bad review, and write the result back to the pull request.",
+     "command": "opencode run --format json \"review the diff in $GITHUB_HEAD_REF\"",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  # .github/workflows/review.yml"
+      },
+      {
+       "type": "input",
+       "text": "opencode run --format json \"review the diff in $GITHUB_HEAD_REF\""
+      },
+      {
+       "type": "output",
+       "text": "  fetching PR diff ..."
+      },
+      {
+       "type": "output",
+       "text": "  reviewed 14 files, 3 findings"
+      },
+      {
+       "type": "output",
+       "text": "  wrote /tmp/review.md"
+      }
+     ],
+     "tip": "In CI, pin the model with --model and set a budget with agent steps so a loop cannot burn your credits."
+    },
+    {
+     "id": "s6",
+     "title": "Pull request mode",
+     "narration": "opencode pr checks out a pull request branch and starts a session on it - the fastest way to review a contributor's work locally.",
+     "command": "opencode pr 412",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode pr 412"
+      },
+      {
+       "type": "output",
+       "text": "  fetching PR 412 ..."
+      },
+      {
+       "type": "output",
+       "text": "  checked out branch pr/412-add-health-endpoint"
+      },
+      {
+       "type": "success",
+       "text": "  session ready  |  type /init if this repo has no AGENTS.md yet"
+      }
+     ],
+     "tip": "opencode github install sets up the same agent inside GitHub Actions if you want it fully automated."
+    }
+   ]
+  },
+  {
+   "id": "opencode-mcp",
+   "title": "Add real tools with MCP",
+   "agent": "opencode",
+   "level": "intermediate",
+   "duration_min": 35,
+   "summary": "MCP gives the agent capabilities it does not have: live documentation, code search, issue trackers, your databases. This session adds three servers and then keeps their context cost under control.",
+   "outcome": [
+    "Three MCP servers attached",
+    "OAuth auth working for one of them",
+    "A rule so the agent reaches for them automatically"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Add a local server",
+     "narration": "opencode mcp add walks you through it, or you can write the config yourself. A local server is just a command with optional environment variables.",
+     "command": "opencode mcp add",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode mcp add"
+      },
+      {
+       "type": "output",
+       "text": "  name      -> filesystem"
+      },
+      {
+       "type": "output",
+       "text": "  type      -> local"
+      },
+      {
+       "type": "output",
+       "text": "  command   -> npx -y @modelcontextprotocol/server-filesystem /tmp"
+      },
+      {
+       "type": "success",
+       "text": "  added 'filesystem' to opencode.json"
+      },
+      {
+       "type": "input",
+       "text": "opencode mcp list"
+      },
+      {
+       "type": "output",
+       "text": "  filesystem   connected"
+      }
+     ],
+     "tip": "Local servers are started on demand by opencode - you do not run them yourself."
+    },
+    {
+     "id": "s2",
+     "title": "Add a docs server",
+     "narration": "Context7 searches current documentation for libraries. A remote MCP server is a URL and sometimes a header - that is the whole config.",
+     "command": "opencode.json",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  // opencode.json"
+      },
+      {
+       "type": "accent",
+       "text": "  {"
+      },
+      {
+       "type": "accent",
+       "text": "    \"mcp\": {"
+      },
+      {
+       "type": "accent",
+       "text": "      \"context7\": {"
+      },
+      {
+       "type": "accent",
+       "text": "        \"type\": \"remote\","
+      },
+      {
+       "type": "accent",
+       "text": "        \"url\": \"https://mcp.context7.com/mcp\","
+      },
+      {
+       "type": "accent",
+       "text": "        \"headers\": { \"CONTEXT7_API_KEY\": \"{env:CONTEXT7_API_KEY}\" }"
+      },
+      {
+       "type": "accent",
+       "text": "      }"
+      },
+      {
+       "type": "accent",
+       "text": "    }"
+      },
+      {
+       "type": "accent",
+       "text": "  }"
+      }
+     ],
+     "tip": "Reference env vars with {env:NAME} so keys never land in the config file."
+    },
+    {
+     "id": "s3",
+     "title": "Search code on GitHub",
+     "narration": "gh_grep searches public code for examples. Name the server and then ask for it by name so the model reaches for it deliberately.",
+     "command": "How do I set a custom domain in an SST Astro component? use the gh_grep tool",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "  \"mcp\": { \"gh_grep\": { \"type\": \"remote\", \"url\": \"https://mcp.grep.app\" } }"
+      },
+      {
+       "type": "input",
+       "text": "How do I set a custom domain in an SST Astro component? use the gh_grep tool"
+      },
+      {
+       "type": "tool",
+       "text": "  gh_grep_search  \"custom domain sst astro\""
+      },
+      {
+       "type": "output",
+       "text": "  found 12 examples across 6 repositories"
+      },
+      {
+       "type": "output",
+       "text": "  closest match: sst/ion -> \"domain: { example.com: { zone: ... } }\""
+      }
+     ],
+     "tip": "Say 'use the X tool' in the prompt. The server name is a prefix on every tool it exposes."
+    },
+    {
+     "id": "s4",
+     "title": "OAuth servers",
+     "narration": "Remote servers that use OAuth just work - opencode detects the 401 and runs the flow. You can also trigger it yourself and check status.",
+     "command": "opencode mcp auth sentry",
+     "lines": [
+      {
+       "type": "input",
+       "text": "opencode mcp auth sentry"
+      },
+      {
+       "type": "output",
+       "text": "  opening browser for authorisation ..."
+      },
+      {
+       "type": "success",
+       "text": "  authenticated  |  sentry"
+      },
+      {
+       "type": "input",
+       "text": "opencode mcp auth list"
+      },
+      {
+       "type": "output",
+       "text": "  sentry   authorised   (tokens in ~/.local/share/opencode/mcp-auth.json)"
+      }
+     ],
+     "tip": "opencode mcp debug <name> shows auth status, tests connectivity and walks the discovery flow."
+    },
+    {
+     "id": "s5",
+     "title": "Control the context cost",
+     "narration": "Every MCP tool lives in the context window. Enable a server globally but disable its tools, then turn them on only for the agent that needs them.",
+     "command": "opencode.json",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  // disable everything, then opt in per agent"
+      },
+      {
+       "type": "accent",
+       "text": "  {"
+      },
+      {
+       "type": "accent",
+       "text": "    \"tools\": { \"*mcp*\": false },"
+      },
+      {
+       "type": "accent",
+       "text": "    \"agent\": { \"researcher\": { \"tools\": { \"gh_grep*\": true, \"context7*\": true } } }"
+      },
+      {
+       "type": "accent",
+       "text": "  }"
+      }
+     ],
+     "tip": "The GitHub MCP server alone can add tens of thousands of tokens. Enable it only for agents that need it."
+    },
+    {
+     "id": "s6",
+     "title": "Make it automatic",
+     "narration": "The most reliable way to get an agent to use a tool is to say so in AGENTS.md, where it is read on every session.",
+     "command": "AGENTS.md",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  # AGENTS.md"
+      },
+      {
+       "type": "accent",
+       "text": "  When you are unsure how to do something, use `gh_grep` to search"
+      },
+      {
+       "type": "accent",
+       "text": "  real code examples on GitHub before guessing."
+      },
+      {
+       "type": "accent",
+       "text": "  When you need library documentation, use `context7`."
+      }
+     ],
+     "tip": "Rules beat prompting: an instruction in AGENTS.md applies to every session without you retyping it."
+    }
+   ]
+  },
+  {
+   "id": "claude-code",
+   "title": "Claude Code in an afternoon",
+   "agent": "claude",
+   "level": "beginner",
+   "duration_min": 50,
+   "summary": "CLAUDE.md, plan mode, MCP, hooks and print mode - the five features that make Claude Code more than a chat box, and how to set each one up.",
+   "outcome": [
+    "A CLAUDE.md generated from your repo",
+    "A plan-then-build habit",
+    "A hook that runs your tests after every edit",
+    "A scriptable print mode"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Install and sign in",
+     "narration": "Claude Code runs from npm or the install script, then authenticates with your Anthropic account. Starting it inside a git repository gives you the full toolset.",
+     "command": "npm install -g @anthropic-ai/claude-code",
+     "lines": [
+      {
+       "type": "input",
+       "text": "npm install -g @anthropic-ai/claude-code"
+      },
+      {
+       "type": "success",
+       "text": "  added 2 packages in 6s"
+      },
+      {
+       "type": "input",
+       "text": "claude"
+      },
+      {
+       "type": "output",
+       "text": "  Choose how to log in:"
+      },
+      {
+       "type": "output",
+       "text": "    1. Claude account (subscription)"
+      },
+      {
+       "type": "output",
+       "text": "    2. Anthropic Console account"
+      },
+      {
+       "type": "output",
+       "text": "  -> 1"
+      },
+      {
+       "type": "success",
+       "text": "  logged in"
+      }
+     ],
+     "tip": "Set EDITOR=code --wait so /editor and /export open your GUI editor and wait for you."
+    },
+    {
+     "id": "s2",
+     "title": "Generate CLAUDE.md",
+     "narration": "/init reads the repo and writes CLAUDE.md - build commands, layout and conventions. It is the equivalent of AGENTS.md and it is the first thing to commit to any repo you work on with an agent.",
+     "command": "/init",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "/init"
+      },
+      {
+       "type": "tool",
+       "text": "  Read(31)   scanning repository"
+      },
+      {
+       "type": "tool",
+       "text": "  Grep(4)    finding test commands"
+      },
+      {
+       "type": "output",
+       "text": "  Wrote CLAUDE.md"
+      },
+      {
+       "type": "output",
+       "text": "    | commands: pytest -q, npm run lint, npm run build"
+      },
+      {
+       "type": "output",
+       "text": "    | python code lives in backend/app, tests in backend/tests"
+      }
+     ],
+     "tip": "Re-run /init any time the repo changes shape - it updates the file in place."
+    },
+    {
+     "id": "s3",
+     "title": "Plan before you touch",
+     "narration": "Shift+Tab switches into plan mode, where Claude analyses and proposes but does not edit. Use it for anything bigger than a one-line fix.",
+     "command": "Shift+Tab  ->  plan mode",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  [shift+tab] plan mode on"
+      },
+      {
+       "type": "input",
+       "text": "Add rate limiting to the public API. Which layer should it live in?"
+      },
+      {
+       "type": "output",
+       "text": "  Plan"
+      },
+      {
+       "type": "output",
+       "text": "   1. middleware in app/core/rate_limit.py (already exists)"
+      },
+      {
+       "type": "output",
+       "text": "   2. key: client IP + route template, not the full path"
+      },
+      {
+       "type": "output",
+       "text": "   3. exempt /api/health"
+      },
+      {
+       "type": "output",
+       "text": "   4. tests for allow, block and exempt cases"
+      },
+      {
+       "type": "muted",
+       "text": "  no files changed"
+      }
+     ],
+     "tip": "Ask the agent to justify the plan location - it usually reveals a better seam in your own code."
+    },
+    {
+     "id": "s4",
+     "title": "Give it tools with MCP",
+     "narration": "MCP servers are added with a command and are then available to the agent. The same protocol opencode uses, so the servers are portable between tools.",
+     "command": "claude mcp add sentry --transport http https://mcp.sentry.dev/mcp",
+     "lines": [
+      {
+       "type": "input",
+       "text": "claude mcp add sentry --transport http https://mcp.sentry.dev/mcp"
+      },
+      {
+       "type": "output",
+       "text": "  added sentry"
+      },
+      {
+       "type": "input",
+       "text": "claude mcp list"
+      },
+      {
+       "type": "output",
+       "text": "  sentry   connected   (12 tools)"
+      }
+     ],
+     "tip": "Sentry's server uses OAuth - Claude Code will run the browser flow the first time you call it."
+    },
+    {
+     "id": "s5",
+     "title": "Hooks that guard the loop",
+     "narration": "Hooks run your own commands on tool events. A PostToolUse hook that runs the test suite after every edit turns the agent from 'usually right' into 'verified'.",
+     "command": "settings.json",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  // .claude/settings.json"
+      },
+      {
+       "type": "accent",
+       "text": "  {"
+      },
+      {
+       "type": "accent",
+       "text": "    \"hooks\": {"
+      },
+      {
+       "type": "accent",
+       "text": "      \"PostToolUse\": [{ \"matcher\": \"Edit|Write\","
+      },
+      {
+       "type": "accent",
+       "text": "        \"hooks\": [{ \"type\": \"command\","
+      },
+      {
+       "type": "accent",
+       "text": "          \"command\": \"cd backend && pytest -q\" }] }] }"
+      },
+      {
+       "type": "accent",
+       "text": "  }"
+      }
+     ],
+     "tip": "Keep the hook fast. A slow hook runs on every single edit and you will start ignoring it."
+    },
+    {
+     "id": "s6",
+     "title": "Print mode for scripts",
+     "narration": "claude -p takes a prompt, prints the answer and exits - the non-interactive version of the agent, ready for CI and cron.",
+     "command": "claude -p \"summarise this repo in 5 bullets\"",
+     "lines": [
+      {
+       "type": "input",
+       "text": "claude -p \"summarise this repo in 5 bullets\""
+      },
+      {
+       "type": "output",
+       "text": "  * FastAPI backend with async SQLAlchemy and a SQLite store"
+      },
+      {
+       "type": "output",
+       "text": "  * React 19 SPA built with Vite and Tailwind"
+      },
+      {
+       "type": "output",
+       "text": "  * Provider layer with OpenAI-compatible, Anthropic and Gemini adapters"
+      },
+      {
+       "type": "output",
+       "text": "  * 27 pytest tests covering API, grading and sandbox"
+      },
+      {
+       "type": "output",
+       "text": "  * Single start.bat boots venv, build and API"
+      }
+     ],
+     "tip": "Combine with --allowedTools to lock down what a scripted run may touch."
+    },
+    {
+     "id": "s7",
+     "title": "Keep the context small",
+     "narration": "Long sessions fill the window with stale detail. /compact summarises the conversation into a plan and keeps going; /clear starts fresh with CLAUDE.md still loaded.",
+     "command": "/compact",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "/compact"
+      },
+      {
+       "type": "output",
+       "text": "  compacted 41 messages into a summary"
+      },
+      {
+       "type": "output",
+       "text": "  kept: plan for the rate limiter, 3 files edited, 2 open questions"
+      },
+      {
+       "type": "success",
+       "text": "  context saved: ~52K tokens"
+      }
+     ],
+     "tip": "Compact at natural boundaries - after a feature lands, not in the middle of a debug loop."
+    }
+   ]
+  },
+  {
+   "id": "codex-cli",
+   "title": "Codex CLI: approvals and sandboxing",
+   "agent": "codex",
+   "level": "beginner",
+   "duration_min": 35,
+   "summary": "Codex is explicit about two things: what it wants to do, and what it is allowed to touch. This session sets up the approval model, writes AGENTS.md and runs it in CI.",
+   "outcome": [
+    "Codex running under your ChatGPT plan",
+    "An approval and sandbox policy you chose on purpose",
+    "A headless run in a pipeline"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Install and sign in",
+     "narration": "npm, Homebrew or the standalone installer. On first run Codex offers to sign in with your ChatGPT plan - that is the path that does not need a separate API bill.",
+     "command": "npm install -g @openai/codex",
+     "lines": [
+      {
+       "type": "input",
+       "text": "npm install -g @openai/codex"
+      },
+      {
+       "type": "success",
+       "text": "  added 1 package in 5s"
+      },
+      {
+       "type": "input",
+       "text": "codex"
+      },
+      {
+       "type": "output",
+       "text": "  Select how to sign in:"
+      },
+      {
+       "type": "output",
+       "text": "    1. Sign in with ChatGPT   (Plus / Pro / Business / Edu / Enterprise)"
+      },
+      {
+       "type": "output",
+       "text": "    2. Use an API key"
+      },
+      {
+       "type": "output",
+       "text": "  -> 1"
+      },
+      {
+       "type": "success",
+       "text": "  signed in as you@example.com"
+      }
+     ],
+     "tip": "An API key works too, but then usage is billed to the API account rather than your plan."
+    },
+    {
+     "id": "s2",
+     "title": "Understand the approval model",
+     "narration": "Codex shows every action before it takes it. Reads are usually free; writes and commands depend on the approval mode you picked at start.",
+     "command": "codex",
+     "lines": [
+      {
+       "type": "input",
+       "text": "codex"
+      },
+      {
+       "type": "output",
+       "text": "  approval mode: on-request"
+      },
+      {
+       "type": "output",
+       "text": "  sandbox:      workspace-write"
+      },
+      {
+       "type": "output",
+       "text": "  model:        gpt-5-codex"
+      },
+      {
+       "type": "muted",
+       "text": "  > try 'fix the failing test in backend/tests'"
+      }
+     ],
+     "tip": "on-request means Codex pauses for anything that writes or runs commands; never means it can act inside the sandbox without asking."
+    },
+    {
+     "id": "s3",
+     "title": "Write AGENTS.md",
+     "narration": "Codex reads AGENTS.md for repo-wide instructions - the same filename opencode uses, so a repo can carry one file for both tools.",
+     "command": "AGENTS.md",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  # AGENTS.md"
+      },
+      {
+       "type": "accent",
+       "text": "  - Python 3.12+, FastAPI backend in backend/app"
+      },
+      {
+       "type": "accent",
+       "text": "  - Tests: cd backend && pytest -q"
+      },
+      {
+       "type": "accent",
+       "text": "  - Lint/format: cd frontend && npm run lint"
+      },
+      {
+       "type": "accent",
+       "text": "  - Never edit files under backend/alembic/versions by hand"
+      }
+     ],
+     "tip": "Say 'never do X' explicitly. Negative rules in AGENTS.md are respected more reliably than positive ones."
+    },
+    {
+     "id": "s4",
+     "title": "Watch it work",
+     "narration": "Each step is shown as a proposal. Approve the ones you want, reject the ones you do not, and watch the sandbox keep it inside the workspace.",
+     "command": "fix the failing test in backend/tests",
+     "lines": [
+      {
+       "type": "input",
+       "text": "fix the failing test in backend/tests"
+      },
+      {
+       "type": "tool",
+       "text": "  Read(1)   backend/tests/test_health.py"
+      },
+      {
+       "type": "tool",
+       "text": "  Bash(1)   cd backend && pytest -q tests/test_health.py"
+      },
+      {
+       "type": "output",
+       "text": "  1 failed, 26 passed"
+      },
+      {
+       "type": "tool",
+       "text": "  Edit(1)   backend/tests/test_health.py"
+      },
+      {
+       "type": "tool",
+       "text": "  Bash(1)   cd backend && pytest -q"
+      },
+      {
+       "type": "success",
+       "text": "  27 passed in 1.4s"
+      }
+     ],
+     "tip": "If it asks to run something odd, read it. Approval prompts are the cheapest security you will ever get."
+    },
+    {
+     "id": "s5",
+     "title": "Auto mode inside the sandbox",
+     "narration": "When you trust the task, --full-auto lets it work without prompts while the sandbox still confines it to the workspace.",
+     "command": "codex --full-auto",
+     "lines": [
+      {
+       "type": "input",
+       "text": "codex --full-auto"
+      },
+      {
+       "type": "output",
+       "text": "  approval mode: never   |   sandbox: workspace-write"
+      },
+      {
+       "type": "input",
+       "text": "add a /health route and a test for it"
+      },
+      {
+       "type": "tool",
+       "text": "  Edit(2) | Write(1) | Bash(1)"
+      },
+      {
+       "type": "success",
+       "text": "  28 passed in 1.6s"
+      }
+     ],
+     "tip": "Never use --full-auto where network access matters. The sandbox stops writes outside the repo, not outbound calls."
+    },
+    {
+     "id": "s6",
+     "title": "Headless runs in CI",
+     "narration": "codex exec is the scriptable form: a prompt in, an answer out, exit code for the pipeline to act on.",
+     "command": "codex exec \"review the staged diff and print findings\"",
+     "lines": [
+      {
+       "type": "input",
+       "text": "codex exec \"review the staged diff and print findings\""
+      },
+      {
+       "type": "output",
+       "text": "  reviewing 6 staged files ..."
+      },
+      {
+       "type": "output",
+       "text": "  ! api/routes/files.py - filename is built from user input"
+      },
+      {
+       "type": "success",
+       "text": "  done  |  1 finding  |  exit 0"
+      }
+     ],
+     "tip": "Add --output-last-message to a file if you want the final text in your build log."
+    }
+   ]
+  },
+  {
+   "id": "gemini-cli",
+   "title": "Gemini CLI and the free tier",
+   "agent": "gemini",
+   "level": "beginner",
+   "duration_min": 30,
+   "summary": "The most generous free agent tier available: Google AI Studio's flash quotas with no credit card. This session sets up auth, writes GEMINI.md and scripts it.",
+   "outcome": [
+    "Gemini CLI signed in on the free tier",
+    "A GEMINI.md with your project context",
+    "A JSON-mode command you can call from a script"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Install it",
+     "narration": "npx runs it with no install at all; npm -g is the everyday option. On Windows the npm route is the most reliable.",
+     "command": "npm install -g @google/gemini-cli",
+     "lines": [
+      {
+       "type": "input",
+       "text": "npm install -g @google/gemini-cli"
+      },
+      {
+       "type": "success",
+       "text": "  added 214 packages in 21s"
+      },
+      {
+       "type": "input",
+       "text": "npx @google/gemini-cli   # run once, no install"
+      }
+     ],
+     "tip": "Release channels exist: @latest, @preview and @nightly. Pin @latest in anything automated."
+    },
+    {
+     "id": "s2",
+     "title": "Pick how you authenticate",
+     "narration": "Sign in with Google for the free tier, use a Gemini API key for model control, or point at Vertex AI for enterprise workloads.",
+     "command": "gemini",
+     "lines": [
+      {
+       "type": "input",
+       "text": "gemini"
+      },
+      {
+       "type": "output",
+       "text": "  1. Login with Google"
+      },
+      {
+       "type": "output",
+       "text": "  2. Gemini API key"
+      },
+      {
+       "type": "output",
+       "text": "  3. Vertex AI"
+      },
+      {
+       "type": "output",
+       "text": "  -> 1"
+      },
+      {
+       "type": "success",
+       "text": "  authenticated  |  free tier  |  ~1500 requests/day"
+      }
+     ],
+     "tip": "The free tier caps out at 1,500 requests a day on flash models with no card required - perfect for a side project."
+    },
+    {
+     "id": "s3",
+     "title": "Write GEMINI.md",
+     "narration": "GEMINI.md is the equivalent of AGENTS.md and CLAUDE.md: project context loaded on every session. The ecosystem converged on one filename for a reason.",
+     "command": "GEMINI.md",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  # GEMINI.md"
+      },
+      {
+       "type": "accent",
+       "text": "  This repo has a FastAPI backend in backend/ and a React app in frontend/."
+      },
+      {
+       "type": "accent",
+       "text": "  Run tests with `cd backend && pytest -q`."
+      },
+      {
+       "type": "accent",
+       "text": "  Never edit backend/alembic/versions by hand."
+      }
+     ],
+     "tip": "You can have both GEMINI.md and AGENTS.md - different tools read different files, and they do not conflict."
+    },
+    {
+     "id": "s4",
+     "title": "Include other directories",
+     "narration": "Monorepos and sibling libraries are one flag away. Context that is out of the working directory is invisible unless you say so.",
+     "command": "gemini --include-directories ../lib,../docs",
+     "lines": [
+      {
+       "type": "input",
+       "text": "gemini --include-directories ../lib,../docs"
+      },
+      {
+       "type": "output",
+       "text": "  context: /repo  +  ../lib  +  ../docs"
+      },
+      {
+       "type": "input",
+       "text": "how does ../lib emit the events we consume in api/hooks?"
+      },
+      {
+       "type": "tool",
+       "text": "  Grep(3)   ../lib/events"
+      },
+      {
+       "type": "output",
+       "text": "  ../lib/events.ts emits on commit and on user.created"
+      }
+     ],
+     "tip": "The same idea as @file references, but for whole directories."
+    },
+    {
+     "id": "s5",
+     "title": "Script it with JSON output",
+     "narration": "-p runs a prompt non-interactively. --output-format json gives structured output for scripts, and stream-json gives live events for progress UIs.",
+     "command": "gemini -p \"list the endpoints in api/\" --output-format json",
+     "lines": [
+      {
+       "type": "input",
+       "text": "gemini -p \"list the endpoints in api/\" --output-format json"
+      },
+      {
+       "type": "output",
+       "text": "  {"
+      },
+      {
+       "type": "output",
+       "text": "    \"response\": \"GET /api/health, POST /api/chat, ...\","
+      },
+      {
+       "type": "output",
+       "text": "    \"stats\": { \"duration_ms\": 2410, \"models\": [\"gemini-2.5-flash\"] }"
+      },
+      {
+       "type": "output",
+       "text": "  }"
+      }
+     ],
+     "tip": "Use --output-format stream-json when you want progress in a long-running job instead of one blob at the end."
+    },
+    {
+     "id": "s6",
+     "title": "MCP and where this is heading",
+     "narration": "MCP servers live in ~/.gemini/settings.json. Note for 2026: Google has moved unpaid and Google One users to Antigravity CLI, and recommends it for the newest Gemini models.",
+     "command": "~/.gemini/settings.json",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  ~/.gemini/settings.json"
+      },
+      {
+       "type": "accent",
+       "text": "  {"
+      },
+      {
+       "type": "accent",
+       "text": "    \"mcpServers\": {"
+      },
+      {
+       "type": "accent",
+       "text": "      \"github\": { \"command\": \"npx\", \"args\": [\"-y\", \"@modelcontextprotocol/server-github\"] }"
+      },
+      {
+       "type": "accent",
+       "text": "    }"
+      },
+      {
+       "type": "accent",
+       "text": "  }"
+      },
+      {
+       "type": "muted",
+       "text": "  note: Gemini CLI was replaced by Antigravity CLI for unpaid"
+      },
+      {
+       "type": "muted",
+       "text": "        and Google One tiers on 18 June 2026."
+      }
+     ],
+     "tip": "Keep both installed if you use Google models - Antigravity CLI is the one tuned for the newest Gemini models."
+    }
+   ]
+  },
+  {
+   "id": "aider",
+   "title": "Aider: architect plus editor",
+   "agent": "aider",
+   "level": "intermediate",
+   "duration_min": 35,
+   "summary": "Aider treats every edit as a commit and splits thinking from editing, so a frontier model can plan while a cheap model does the typing. That combination is how you run a strong agent on a small budget.",
+   "outcome": [
+    "A git-aware agent that commits every change",
+    "A repo map that keeps context proportional",
+    "Two models: one for architecture, one for edits"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Install and start in a repo",
+     "narration": "Aider requires a git repository - that is how it tracks every change it makes. It installs a helper binary so it can manage git without polluting your PATH.",
+     "command": "python -m pip install aider-install && aider-install",
+     "lines": [
+      {
+       "type": "input",
+       "text": "python -m pip install aider-install && aider-install"
+      },
+      {
+       "type": "success",
+       "text": "  installed aider 0.86.0"
+      },
+      {
+       "type": "input",
+       "text": "cd ~/projects/my-app && aider"
+      },
+      {
+       "type": "output",
+       "text": "  git repo detected  |  branch main  |  3 files in context"
+      }
+     ],
+     "tip": "Run git init first if the folder is not a repo yet - aider will refuse to start otherwise."
+    },
+    {
+     "id": "s2",
+     "title": "Load the right files",
+     "narration": "The repo map is aider's trick: it builds a compact index of the whole repository so the model knows where things live without reading everything. Add specific files when you want them verbatim.",
+     "command": "/add backend/app/api/routes/health.py",
+     "lines": [
+      {
+       "type": "input",
+       "text": "/add backend/app/api/routes/health.py"
+      },
+      {
+       "type": "output",
+       "text": "  added 1 file  |  418 tokens"
+      },
+      {
+       "type": "output",
+       "text": "  repo map: 87 files, 4,201 tokens of signatures"
+      },
+      {
+       "type": "muted",
+       "text": "  (the map grows as the repo grows - you never paste whole files)"
+      }
+     ],
+     "tip": "Use /read to pull a file into context permanently, /drop to remove it. Context is a budget - spend it deliberately."
+    },
+    {
+     "id": "s3",
+     "title": "Ask before editing",
+     "narration": "/ask runs a question in read-only mode. It is the cheapest way to understand code you have not touched, and it never dirties your working tree.",
+     "command": "/ask why is the retry logic in three different places?",
+     "lines": [
+      {
+       "type": "input",
+       "text": "/ask why is the retry logic in three different places?"
+      },
+      {
+       "type": "tool",
+       "text": "  Read(3)   api/client.py, api/queue.py, workers/sync.py"
+      },
+      {
+       "type": "output",
+       "text": "  Each was written for a different transport. api/client.py retries"
+      },
+      {
+       "type": "output",
+       "text": "  HTTP 5xx, queue.py retries job failures, workers/sync.py retries"
+      },
+      {
+       "type": "output",
+       "text": "  the nightly sync. They share no backoff policy."
+      }
+     ],
+     "tip": "Questions are free - they cost no edit churn and no commits. Use them to explore first."
+    },
+    {
+     "id": "s4",
+     "title": "Split architect and editor",
+     "narration": "With --architect, a strong model writes the plan and a cheaper model applies it. The expensive model thinks once; the cheap model writes the code.",
+     "command": "aider --architect --model gpt-4.1 --editor-model gpt-4o-mini",
+     "lines": [
+      {
+       "type": "input",
+       "text": "aider --architect --model gpt-4.1 --editor-model gpt-4o-mini"
+      },
+      {
+       "type": "output",
+       "text": "  architect model: gpt-4.1"
+      },
+      {
+       "type": "output",
+       "text": "  editor model:    gpt-4o-mini"
+      },
+      {
+       "type": "input",
+       "text": "extract the retry helper into api/retry.py and use it in all three places"
+      },
+      {
+       "type": "output",
+       "text": "  ARCHITECT: create api/retry.py with retry(fn, attempts=3, backoff=0.5)"
+      },
+      {
+       "type": "output",
+       "text": "  EDITOR:    applied to 4 files"
+      },
+      {
+       "type": "success",
+       "text": "  commit 9f3a1c2  extract retry helper"
+      }
+     ],
+     "tip": "This is the cheapest path to frontier-quality output: pay for the plan, not for every token of the diff."
+    },
+    {
+     "id": "s5",
+     "title": "Review the diff",
+     "narration": "Because every change is a commit, the diff is always available and always reversible. /diff shows what is pending before you accept it.",
+     "command": "/diff",
+     "lines": [
+      {
+       "type": "input",
+       "text": "/diff"
+      },
+      {
+       "type": "diff",
+       "text": "  api/retry.py            +24"
+      },
+      {
+       "type": "diff",
+       "text": "  api/client.py          +6   -11"
+      },
+      {
+       "type": "diff",
+       "text": "  api/queue.py           +3   -9"
+      },
+      {
+       "type": "diff",
+       "text": "  workers/sync.py        +2   -7"
+      },
+      {
+       "type": "muted",
+       "text": "  4 files changed, 35 insertions, 27 deletions"
+      }
+     ],
+     "tip": "/undo reverts the last change; /commit forces a commit right now instead of waiting for aider's own."
+    },
+    {
+     "id": "s6",
+     "title": "Automate it",
+     "narration": "--message starts with the task already loaded, so aider can run unattended in a script or a pipeline.",
+     "command": "aider --message \"add a test for the retry helper\" --yes",
+     "lines": [
+      {
+       "type": "input",
+       "text": "aider --message \"add a test for the retry helper\" --yes"
+      },
+      {
+       "type": "tool",
+       "text": "  Read(1)   api/retry.py"
+      },
+      {
+       "type": "tool",
+       "text": "  Write(1)  tests/test_retry.py"
+      },
+      {
+       "type": "success",
+       "text": "  commit 41b7de9  add tests for retry helper"
+      }
+     ],
+     "tip": "--yes accepts edits without prompting. Use it only in a throwaway branch."
+    }
+   ]
+  },
+  {
+   "id": "opencode-skills",
+   "title": "Write your first agent skill",
+   "agent": "opencode",
+   "level": "intermediate",
+   "duration_min": 30,
+   "summary": "Skills are the cheapest way to give an agent a procedure. One folder, one SKILL.md, and the harness advertises it by name so the model can pull the full text when the task calls for it.",
+   "outcome": [
+    "A skill that loads on demand in any agent that speaks the format",
+    "Permissions so a skill cannot be triggered by the wrong agent",
+    "A slash command version of the skill for manual invocation"
+   ],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Know when to use a skill",
+     "narration": "Rules files are always in context, so they must stay short. Skills are advertised by name and loaded only when needed, so they can be long and specific. If a procedure only applies to one kind of task, it belongs in a skill.",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  AGENTS.md       always loaded   -> keep it under a page"
+      },
+      {
+       "type": "muted",
+       "text": "  SKILL.md        loaded on demand -> can be a whole playbook"
+      },
+      {
+       "type": "muted",
+       "text": "  MCP server      external tools    -> costs context on every turn"
+      }
+     ],
+     "tip": "If you catch yourself pasting the same six steps into every prompt, that is a skill."
+    },
+    {
+     "id": "s2",
+     "title": "Create the folder",
+     "narration": "One directory per skill, named exactly like the skill, with SKILL.md inside in all caps. The name must match the folder or the skill will not load.",
+     "command": "mkdir -p .opencode/skills/git-release",
+     "lines": [
+      {
+       "type": "input",
+       "text": "mkdir -p .opencode/skills/git-release"
+      },
+      {
+       "type": "muted",
+       "text": "  .opencode/skills/git-release/SKILL.md"
+      },
+      {
+       "type": "muted",
+       "text": "  (the directory name must match the name in the frontmatter)"
+      }
+     ],
+     "tip": "Project skills live in .opencode/skills/, global ones in ~/.config/opencode/skills/."
+    },
+    {
+     "id": "s3",
+     "title": "Write the frontmatter",
+     "narration": "Two required fields: name and description. The description is what the model reads to decide whether to load the skill, so it has to say when to use it, not just what the skill is about.",
+     "command": "cat .opencode/skills/git-release/SKILL.md",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  ---"
+      },
+      {
+       "type": "accent",
+       "text": "  name: git-release"
+      },
+      {
+       "type": "accent",
+       "text": "  description: Create consistent releases and changelogs"
+      },
+      {
+       "type": "accent",
+       "text": "  license: MIT"
+      },
+      {
+       "type": "accent",
+       "text": "  compatibility: opencode"
+      },
+      {
+       "type": "accent",
+       "text": "  metadata:"
+      },
+      {
+       "type": "accent",
+       "text": "    audience: maintainers"
+      },
+      {
+       "type": "accent",
+       "text": "    workflow: github"
+      },
+      {
+       "type": "accent",
+       "text": "  ---"
+      },
+      {
+       "type": "output",
+       "text": "  ## What I do"
+      },
+      {
+       "type": "output",
+       "text": "  - Draft release notes from merged PRs"
+      },
+      {
+       "type": "output",
+       "text": "  - Propose a version bump"
+      },
+      {
+       "type": "output",
+       "text": "  - Provide a copy-pasteable `gh release create` command"
+      }
+     ],
+     "tip": "Name rules: 1-64 characters, lowercase, single hyphens, no leading or trailing hyphen."
+    },
+    {
+     "id": "s4",
+     "title": "See how the model finds it",
+     "narration": "The harness lists every skill's name and description in the tool description. That is the only part that costs context until the model decides to load the skill.",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  the skill tool description contains:"
+      },
+      {
+       "type": "output",
+       "text": "  <available_skills>"
+      },
+      {
+       "type": "output",
+       "text": "    <skill>"
+      },
+      {
+       "type": "output",
+       "text": "      <name>git-release</name>"
+      },
+      {
+       "type": "output",
+       "text": "      <description>Create consistent releases and changelogs</description>"
+      },
+      {
+       "type": "output",
+       "text": "    </skill>"
+      },
+      {
+       "type": "output",
+       "text": "  </available_skills>"
+      },
+      {
+       "type": "tool",
+       "text": "  skill({ name: \"git-release\" })"
+      }
+     ],
+     "tip": "Set metadata opencode/autoinvoke to \"false\" and the skill is still loadable by name, just not advertised."
+    },
+    {
+     "id": "s5",
+     "title": "Control who can use it",
+     "narration": "Skills are permissions like any other tool. Allow the ones you want, deny the internal ones, ask for the experimental ones - with glob patterns.",
+     "command": "opencode.json",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  // opencode.json"
+      },
+      {
+       "type": "accent",
+       "text": "  {"
+      },
+      {
+       "type": "accent",
+       "text": "    \"permission\": {"
+      },
+      {
+       "type": "accent",
+       "text": "      \"skill\": {"
+      },
+      {
+       "type": "accent",
+       "text": "        \"*\": \"allow\","
+      },
+      {
+       "type": "accent",
+       "text": "        \"internal-*\": \"deny\","
+      },
+      {
+       "type": "accent",
+       "text": "        \"experimental-*\": \"ask\""
+      },
+      {
+       "type": "accent",
+       "text": "      }"
+      },
+      {
+       "type": "accent",
+       "text": "    }"
+      },
+      {
+       "type": "accent",
+       "text": "  }"
+      }
+     ],
+     "tip": "Per agent, put the same permission block in the agent frontmatter or in opencode.json under agent.<name>.permission."
+    },
+    {
+     "id": "s6",
+     "title": "Also expose it as a command",
+     "narration": "Sometimes you want to trigger the skill yourself rather than let the model decide. One metadata key turns it into a slash command in the TUI.",
+     "command": "/git-release",
+     "lines": [
+      {
+       "type": "accent",
+       "text": "  metadata:"
+      },
+      {
+       "type": "accent",
+       "text": "    opencode/slash: \"true\""
+      },
+      {
+       "type": "input",
+       "text": "/git-release"
+      },
+      {
+       "type": "output",
+       "text": "  loading skill git-release ..."
+      },
+      {
+       "type": "output",
+       "text": "  merged PRs since the last tag: 14"
+      },
+      {
+       "type": "output",
+       "text": "  proposed version: 2.4.0 (minor - new endpoint, no breaking changes)"
+      },
+      {
+       "type": "output",
+       "text": "  gh release create v2.4.0 --generate-notes"
+      }
+     ],
+     "tip": "Slash and autoinvoke are independent: you can expose a command and still keep it out of automatic selection."
+    },
+    {
+     "id": "s7",
+     "title": "Debug the two common failures",
+     "narration": "Almost every 'my skill does not show up' problem is one of five things. Check them in order and it takes thirty seconds.",
+     "lines": [
+      {
+       "type": "muted",
+       "text": "  1. SKILL.md spelled in all caps"
+      },
+      {
+       "type": "muted",
+       "text": "  2. frontmatter has both name and description"
+      },
+      {
+       "type": "muted",
+       "text": "  3. name is unique across every discovery location"
+      },
+      {
+       "type": "muted",
+       "text": "  4. no permission denies it"
+      },
+      {
+       "type": "muted",
+       "text": "  5. metadata opencode/autoinvoke is not \"false\""
+      },
+      {
+       "type": "success",
+       "text": "  -> skill listed in the tool description"
+      }
+     ],
+     "tip": "Skills are also portable: the same folder works from .claude/skills and .agents/skills."
+    }
+   ]
+  }
+ ],
+ "cheatsheet": [
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "@file.ts",
+   "description": "Fuzzy-search a file and pull it into context"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "!npm test",
+   "description": "Run a shell command and add the output to the conversation"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "@general find the retry helper",
+   "description": "Invoke a subagent by name"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "Tab",
+   "description": "Cycle primary agents (build / plan)"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "ctrl+t",
+   "description": "Cycle model variants (reasoning effort)"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "ctrl+x leader",
+   "description": "Leader key for command keybinds"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "/editor",
+   "description": "Compose the message in $EDITOR"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "/export",
+   "description": "Export the conversation to Markdown"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "/details",
+   "description": "Toggle tool execution details"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "/thinking",
+   "description": "Show or hide thinking blocks"
+  },
+  {
+   "agent": "opencode",
+   "group": "Session",
+   "command": "/themes",
+   "description": "Switch theme"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/init",
+   "description": "Create or update AGENTS.md from the repo"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/connect",
+   "description": "Add a provider or the OpenCode Zen workspace"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/models",
+   "description": "Pick the model for this session"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/compact",
+   "description": "Compact the session (alias /summarize)"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/undo",
+   "description": "Undo the last message and its file changes"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/redo",
+   "description": "Redo an undone message"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/new",
+   "description": "Start a new session (alias /clear)"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/sessions",
+   "description": "List and switch sessions (alias /resume)"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/help",
+   "description": "Open the help dialog"
+  },
+  {
+   "agent": "opencode",
+   "group": "Slash commands",
+   "command": "/exit",
+   "description": "Quit opencode (alias /quit)"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode",
+   "description": "Start the TUI"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode run \"prompt\"",
+   "description": "Non-interactive one-shot run"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode run --format json",
+   "description": "One-shot run emitting JSON events"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode run --attach http://127.0.0.1:4096",
+   "description": "Run against a warm server (no MCP cold boot)"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode run --model provider/model",
+   "description": "Pin the model for a run"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode run --file a.ts --file b.ts",
+   "description": "Attach files to the prompt"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode run --auto",
+   "description": "Auto-approve anything not explicitly denied"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode serve --port 4096",
+   "description": "Headless HTTP server"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode web --port 4096",
+   "description": "Headless server with a browser UI"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode attach <url>",
+   "description": "Attach a terminal to a running backend"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode models [provider]",
+   "description": "List models your keys unlock"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode models --refresh",
+   "description": "Refresh the model catalogue"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode stats --models 5",
+   "description": "Token usage and cost, broken down by model"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode auth login",
+   "description": "Add a provider key"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode auth list",
+   "description": "Show authenticated providers"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode mcp add",
+   "description": "Add an MCP server"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode mcp list",
+   "description": "MCP servers and connection status"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode mcp auth <name>",
+   "description": "Run the OAuth flow for an MCP server"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode mcp debug <name>",
+   "description": "Diagnose MCP auth and connectivity"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode agent create",
+   "description": "Generate a custom agent with permissions"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode agent list",
+   "description": "List available agents"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode pr 412",
+   "description": "Check out a PR branch and start a session on it"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode github install",
+   "description": "Install the GitHub agent into Actions"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode session list",
+   "description": "List past sessions"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode export <sessionID> --sanitize",
+   "description": "Export a session as JSON, redacting content"
+  },
+  {
+   "agent": "opencode",
+   "group": "CLI",
+   "command": "opencode upgrade",
+   "description": "Update to the latest version"
+  },
+  {
+   "agent": "opencode",
+   "group": "Config",
+   "command": "opencode.json",
+   "description": "Project config: agents, commands, mcp, permissions, models"
+  },
+  {
+   "agent": "opencode",
+   "group": "Config",
+   "command": "AGENTS.md",
+   "description": "Project instructions loaded every session"
+  },
+  {
+   "agent": "opencode",
+   "group": "Config",
+   "command": ".opencode/commands/*.md",
+   "description": "Custom slash commands"
+  },
+  {
+   "agent": "opencode",
+   "group": "Config",
+   "command": ".opencode/agents/*.md",
+   "description": "Custom agents with frontmatter"
+  },
+  {
+   "agent": "opencode",
+   "group": "Config",
+   "command": "tui.json",
+   "description": "TUI config: theme, keybinds, cursor, attention"
+  },
+  {
+   "agent": "opencode",
+   "group": "Config",
+   "command": "OPENCODE_SERVER_PASSWORD",
+   "description": "Require basic auth on serve/web"
+  },
+  {
+   "agent": "opencode",
+   "group": "Config",
+   "command": "OPENCODE_DISABLE_CLAUDE_CODE",
+   "description": "Turn off CLAUDE.md / .claude compatibility"
+  },
+  {
+   "agent": "zen",
+   "group": "Zen",
+   "command": "/connect  ->  opencode",
+   "description": "Connect the OpenCode Zen workspace"
+  },
+  {
+   "agent": "zen",
+   "group": "Zen",
+   "command": "opencode models opencode",
+   "description": "List the Zen models your key unlocks"
+  },
+  {
+   "agent": "zen",
+   "group": "Zen",
+   "command": "opencode/mimo-v2.5-pro-free",
+   "description": "Model id format for Zen (provider/model)"
+  },
+  {
+   "agent": "zen",
+   "group": "Zen",
+   "command": "opencode/mimo-v2.5-flash-free",
+   "description": "Cheap Zen model - good for planning agents"
+  },
+  {
+   "agent": "zen",
+   "group": "Zen",
+   "command": "opencode/minimax-m2.5-free",
+   "description": "Coding-tuned free model"
+  },
+  {
+   "agent": "zen",
+   "group": "Zen",
+   "command": "opencode/qwen-3.6-plus-free",
+   "description": "Long-context free model"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex",
+   "description": "Start the interactive agent"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex app",
+   "description": "Open the desktop app"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex exec \"prompt\"",
+   "description": "Non-interactive run"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex --full-auto",
+   "description": "No approvals, sandbox still applies"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex --sandbox workspace-write",
+   "description": "Choose the sandbox policy"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex --ask-for-approval",
+   "description": "Set the approval mode explicitly"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex resume",
+   "description": "Resume a previous session"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "codex exec --output-last-message out.txt",
+   "description": "Write the final answer to a file"
+  },
+  {
+   "agent": "codex",
+   "group": "Codex",
+   "command": "AGENTS.md",
+   "description": "Repo-wide instructions read every session"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "gemini",
+   "description": "Start the interactive agent"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "gemini -m gemini-2.5-flash",
+   "description": "Choose the model"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "gemini -p \"prompt\"",
+   "description": "One-shot, no TUI"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "gemini -p \"...\" --output-format json",
+   "description": "Structured output for scripts"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "gemini -p \"...\" --output-format stream-json",
+   "description": "Newline-delimited JSON events"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "gemini --include-directories ../lib",
+   "description": "Add sibling directories to context"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "GEMINI.md",
+   "description": "Project context file"
+  },
+  {
+   "agent": "gemini",
+   "group": "Gemini",
+   "command": "~/.gemini/settings.json",
+   "description": "MCP servers and settings"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "claude",
+   "description": "Start the interactive session"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "claude -p \"prompt\"",
+   "description": "Print mode - one-shot output"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "/init",
+   "description": "Create CLAUDE.md from the repo"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "/compact",
+   "description": "Summarise the conversation to free context"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "/resume",
+   "description": "Return to an earlier session"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "/clear",
+   "description": "Start a clean session (CLAUDE.md still applies)"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "claude mcp add <name> --transport http <url>",
+   "description": "Register an MCP server"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "CLAUDE.md",
+   "description": "Project instructions file"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": ".claude/settings.json",
+   "description": "Hooks and permissions"
+  },
+  {
+   "agent": "claude",
+   "group": "Claude Code",
+   "command": "--dangerously-skip-permissions",
+   "description": "Skip approval prompts (use only in sandboxes)"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "aider",
+   "description": "Start inside a git repository"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "aider --message \"task\"",
+   "description": "Start with the task already loaded"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "aider --architect --model X --editor-model Y",
+   "description": "Split planning and editing across models"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "/add file.py",
+   "description": "Put a file in context"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "/ask question",
+   "description": "Question the code without editing"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "/code task",
+   "description": "Request an edit"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "/diff",
+   "description": "Review pending changes"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "/undo",
+   "description": "Revert the last change"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": "/commit",
+   "description": "Commit right now"
+  },
+  {
+   "agent": "aider",
+   "group": "Aider",
+   "command": ".aider.conf.yml",
+   "description": "Persistent config: model, repo map, auto commits"
+  },
+  {
+   "agent": "cursor",
+   "group": "IDE",
+   "command": "Cmd/Ctrl+K",
+   "description": "Inline edit at the cursor"
+  },
+  {
+   "agent": "cursor",
+   "group": "IDE",
+   "command": "Cmd/Ctrl+I",
+   "description": "Agent composer"
+  },
+  {
+   "agent": "cursor",
+   "group": "IDE",
+   "command": "@Docs",
+   "description": "Pull indexed documentation into context"
+  },
+  {
+   "agent": "cursor",
+   "group": "IDE",
+   "command": ".cursor/rules/*.mdc",
+   "description": "Project rules with globs"
+  },
+  {
+   "agent": "cline",
+   "group": "IDE",
+   "command": "Plan -> Act",
+   "description": "Approve the plan before edits run"
+  },
+  {
+   "agent": "cline",
+   "group": "IDE",
+   "command": "MCP Servers panel",
+   "description": "Add and enable external tools"
+  },
+  {
+   "agent": "cline",
+   "group": "IDE",
+   "command": "Checkpoints",
+   "description": "Roll the workspace back to any earlier point"
+  },
+  {
+   "agent": "roo",
+   "group": "IDE",
+   "command": "/mode architect",
+   "description": "Switch the active mode"
+  },
+  {
+   "agent": "roo",
+   "group": "IDE",
+   "command": "New Task",
+   "description": "Start a subtask that returns a result"
+  },
+  {
+   "agent": "windsurf",
+   "group": "IDE",
+   "command": "Cascade",
+   "description": "The agent panel - one thread across files and terminal"
+  },
+  {
+   "agent": "windsurf",
+   "group": "IDE",
+   "command": ".windsurf/rules/*.md",
+   "description": "Rules with activation patterns"
+  },
+  {
+   "agent": "continue",
+   "group": "IDE",
+   "command": "config.yaml",
+   "description": "Models, roles, rules and MCP in one file"
+  },
+  {
+   "agent": "continue",
+   "group": "IDE",
+   "command": "/help",
+   "description": "Chat commands in the panel"
+  },
+  {
+   "agent": "continue",
+   "group": "IDE",
+   "command": "@docs",
+   "description": "Attach indexed documentation"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": ".opencode/skills/<name>/SKILL.md",
+   "description": "Create a skill: a folder with one SKILL.md"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": ".agents/skills/<name>/SKILL.md",
+   "description": "Same format, agent-standard path"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": ".claude/skills/<name>/SKILL.md",
+   "description": "Claude-compatible skill path"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": "name: / description:",
+   "description": "The two required frontmatter fields"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": "metadata: opencode/slash: \"true\"",
+   "description": "Expose the skill as a /name command"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": "metadata: opencode/autoinvoke: \"false\"",
+   "description": "Hide it from model-facing auto-selection"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": "\"permission\": { \"skill\": { \"internal-*\": \"deny\" } }",
+   "description": "Allow, deny or ask per skill pattern"
+  },
+  {
+   "agent": "opencode",
+   "group": "Skills",
+   "command": "\"tools\": { \"skill\": false }",
+   "description": "Disable the skill tool entirely for an agent"
+  },
+  {
+   "agent": "opencode",
+   "group": "Plugins",
+   "command": "opencode plugin <module>",
+   "description": "Install a plugin and update your config"
+  },
+  {
+   "agent": "opencode",
+   "group": "Plugins",
+   "command": "opencode plug <module>",
+   "description": "Alias for plugin"
+  },
+  {
+   "agent": "opencode",
+   "group": "Plugins",
+   "command": "opencode plugin <module> --global",
+   "description": "Install into the global config"
+  },
+  {
+   "agent": "opencode",
+   "group": "Extensions",
+   "command": "opencode acp",
+   "description": "Start an ACP server for editors"
+  },
+  {
+   "agent": "opencode",
+   "group": "Extensions",
+   "command": "opencode serve",
+   "description": "Headless HTTP server with the full agent"
+  },
+  {
+   "agent": "opencode",
+   "group": "Extensions",
+   "command": "opencode debug <command>",
+   "description": "Debugging and troubleshooting tools"
+  },
+  {
+   "agent": "opencode",
+   "group": "Extensions",
+   "command": "opencode db path",
+   "description": "Print the local database path"
+  },
+  {
+   "agent": "opencode",
+   "group": "Extensions",
+   "command": "opencode upgrade [target]",
+   "description": "Update to the latest or a pinned version"
+  },
+  {
+   "agent": "goose",
+   "group": "Goose",
+   "command": "goose session start",
+   "description": "Begin an interactive session"
+  },
+  {
+   "agent": "goose",
+   "group": "Goose",
+   "command": "goose recipe run <recipe>",
+   "description": "Run a saved workflow"
+  },
+  {
+   "agent": "goose",
+   "group": "Goose",
+   "command": "goose mcp list",
+   "description": "Extensions and the tools they expose"
+  },
+  {
+   "agent": "openhands",
+   "group": "OpenHands",
+   "command": "openhands",
+   "description": "Start the local server and UI"
+  },
+  {
+   "agent": "openhands",
+   "group": "OpenHands",
+   "command": "openhands --headless",
+   "description": "Run without the browser"
+  },
+  {
+   "agent": "openhands",
+   "group": "OpenHands",
+   "command": "POST /api/conversations",
+   "description": "Drive sessions from your own code"
+  }
+ ],
+ "cheatsheet_groups": [
+  "Session",
+  "Slash commands",
+  "CLI",
+  "Config",
+  "Zen",
+  "Codex",
+  "Gemini",
+  "Claude Code",
+  "Aider",
+  "IDE",
+  "Skills",
+  "Plugins",
+  "Extensions",
+  "Goose",
+  "OpenHands"
+ ],
+ "loop_stages": [
+  {
+   "id": "prompt",
+   "title": "You write the request",
+   "body": "Everything downstream depends on this. Context, constraints, acceptance criteria - in the prompt or in the rules file.",
+   "you_control": "State the outcome, the files in scope and what 'done' means.",
+   "failure": "A vague request gets a broad, invented scope."
+  },
+  {
+   "id": "context",
+   "title": "The agent assembles context",
+   "body": "Rules files, @file references, the repo map, MCP tool definitions and the conversation history all get packed into the prompt.",
+   "you_control": "Keep rules short. Reference files by name instead of pasting them.",
+   "failure": "Too much context buries the instruction you actually care about."
+  },
+  {
+   "id": "model",
+   "title": "The model decides the next action",
+   "body": "The model either answers, or emits a tool call: read this file, run this command, search for this string.",
+   "you_control": "Pick the model. Planning wants speed, editing wants capability.",
+   "failure": "A model that is too weak for the task guesses instead of checking."
+  },
+  {
+   "id": "tools",
+   "title": "Tools run",
+   "body": "Files are read and written, commands are executed, MCP servers answer. Every tool call costs tokens and can fail.",
+   "you_control": "Permissions decide what happens without asking you.",
+   "failure": "Loose permissions plus an injection in a fetched page."
+  },
+  {
+   "id": "verify",
+   "title": "The agent verifies",
+   "body": "Good agents run the tests, the linter or the build before declaring victory. This loop is the whole difference between 'probably right' and 'verified'.",
+   "you_control": "Require a check: 'run the tests and show me the output'.",
+   "failure": "No verification step means confident, unchecked diffs."
+  },
+  {
+   "id": "review",
+   "title": "You review",
+   "body": "The diff is the evidence. Read it, narrow the scope, request changes, undo if needed.",
+   "you_control": "Review the diff, not the narration.",
+   "failure": "Accepting a summary instead of a diff."
+  }
+ ],
+ "craft": [
+  {
+   "id": "scope",
+   "title": "Give it a target, not a topic",
+   "body": "The difference between an agent that helps and one that rewrites your project is the request. Name the files, the behaviour and the check that proves it.",
+   "before": {
+    "lines": [
+     {
+      "type": "input",
+      "text": "improve the auth code"
+     },
+     {
+      "type": "muted",
+      "text": "  agent reads 40 files, refactors the auth layer, renames things,"
+     },
+     {
+      "type": "muted",
+      "text": "  changes 12 files, and stops when the diff is 900 lines"
+     }
+    ]
+   },
+   "after": {
+    "lines": [
+     {
+      "type": "input",
+      "text": "In backend/app/core/security.py, the token comparison uses == instead of"
+     },
+     {
+      "type": "input",
+      "text": "hmac.compare_digest. Change it to compare_digest, and add a test that"
+     },
+     {
+      "type": "input",
+      "text": "two different tokens are rejected. Run pytest -q afterwards."
+     },
+     {
+      "type": "tool",
+      "text": "  Edit(1)   backend/app/core/security.py"
+     },
+     {
+      "type": "tool",
+      "text": "  Write(1)  backend/tests/test_security.py"
+     },
+     {
+      "type": "tool",
+      "text": "  Bash(1)   pytest -q"
+     },
+     {
+      "type": "success",
+      "text": "  29 passed in 1.7s"
+     }
+    ]
+   },
+   "rule": "Files + behaviour + a check. Three parts, one sentence each."
+  },
+  {
+   "id": "plan",
+   "title": "Plan before build, every time",
+   "body": "Every serious agent has a planning mode: opencode's Plan agent, Claude Code's plan mode, Cline's Plan/Act split, Aider's architect mode. They exist because arguing with a plan is cheap and rewriting finished code is not.",
+   "before": {
+    "lines": [
+     {
+      "type": "muted",
+      "text": "  build mode, straight to the edit"
+     },
+     {
+      "type": "tool",
+      "text": "  Write(6)  api/rate_limit.py, api/routes/*.py, tests/..."
+     },
+     {
+      "type": "warn",
+      "text": "  ! 6 files changed  |  the limit is applied per-path, not per-client"
+     }
+    ]
+   },
+   "after": {
+    "lines": [
+     {
+      "type": "muted",
+      "text": "  plan mode first"
+     },
+     {
+      "type": "output",
+      "text": "  Plan"
+     },
+     {
+      "type": "output",
+      "text": "   1. middleware in app/core/rate_limit.py - one instance, app-wide"
+     },
+     {
+      "type": "output",
+      "text": "   2. key on client IP + route template"
+     },
+     {
+      "type": "output",
+      "text": "   3. exempt /api/health and OPTIONS"
+     },
+     {
+      "type": "output",
+      "text": "   4. tests: allow, block, exempt"
+     },
+     {
+      "type": "input",
+      "text": "the key should include the route template - show me where routes are mounted"
+     },
+     {
+      "type": "output",
+      "text": "  Revised: key on app.state.router_path + client IP"
+     }
+    ]
+   },
+   "rule": "Plan, then argue, then build. The plan is where the thinking happens."
+  },
+  {
+   "id": "context",
+   "title": "Point at files, do not paste them",
+   "body": "Agents can open files. Pasting the file instead burns tokens, goes stale and hides the rest of the repo from the model. Reference by path and let the agent pull what it needs.",
+   "before": {
+    "lines": [
+     {
+      "type": "input",
+      "text": "here is our auth module, it is 400 lines, see below ..."
+     },
+     {
+      "type": "muted",
+      "text": "  ... 400 lines pasted into the prompt ..."
+     },
+     {
+      "type": "muted",
+      "text": "  ... and the same 400 lines pasted again next turn ..."
+     }
+    ]
+   },
+   "after": {
+    "lines": [
+     {
+      "type": "input",
+      "text": "how does @backend/app/core/security.py verify a token?"
+     },
+     {
+      "type": "tool",
+      "text": "  Read(1)   backend/app/core/security.py"
+     },
+     {
+      "type": "output",
+      "text": "  hmac.compare_digest against the signature, then a DB lookup for expiry"
+     }
+    ]
+   },
+   "rule": "@file in opencode, @Docs in Cursor, /add in aider, file mentions in Claude Code."
+  },
+  {
+   "id": "verify",
+   "title": "Make the agent prove it",
+   "body": "A model claiming 'done' is a hypothesis. A test run is evidence. Put the check in the prompt and the agent will do it every time, without being reminded.",
+   "before": {
+    "lines": [
+     {
+      "type": "tool",
+      "text": "  Edit(2)   backend/app/api/routes/health.py"
+     },
+     {
+      "type": "success",
+      "text": "  ok Added the /health endpoint as requested"
+     }
+    ]
+   },
+   "after": {
+    "lines": [
+     {
+      "type": "tool",
+      "text": "  Edit(2)   backend/app/api/routes/health.py"
+     },
+     {
+      "type": "tool",
+      "text": "  Write(1)  backend/tests/test_health.py"
+     },
+     {
+      "type": "tool",
+      "text": "  Bash(1)   cd backend && pytest -q"
+     },
+     {
+      "type": "output",
+      "text": "  1 failed, 27 passed"
+     },
+     {
+      "type": "tool",
+      "text": "  Edit(1)   backend/tests/test_health.py"
+     },
+     {
+      "type": "tool",
+      "text": "  Bash(1)   cd backend && pytest -q"
+     },
+     {
+      "type": "success",
+      "text": "  28 passed in 1.9s"
+     }
+    ]
+   },
+   "rule": "End every request with the command that proves the work: pytest, npm run build, cargo test."
+  },
+  {
+   "id": "rules",
+   "title": "Put the rules in a file, not in your memory",
+   "body": "AGENTS.md, CLAUDE.md and GEMINI.md are the same idea: project knowledge that survives between sessions and gets shared with the team. Write the commands, the layout and the three traps.",
+   "before": {
+    "lines": [
+     {
+      "type": "input",
+      "text": "remember to always run the linter before you commit"
+     },
+     {
+      "type": "muted",
+      "text": "  (works, until the session ends and you forget to say it again)"
+     }
+    ]
+   },
+   "after": {
+    "lines": [
+     {
+      "type": "muted",
+      "text": "  # AGENTS.md - committed, read every session"
+     },
+     {
+      "type": "accent",
+      "text": "  - Run `cd frontend && npm run lint` before claiming a change is done"
+     },
+     {
+      "type": "accent",
+      "text": "  - Never edit backend/alembic/versions by hand"
+     },
+     {
+      "type": "accent",
+      "text": "  - Backend is FastAPI + SQLAlchemy async; keep handlers thin"
+     },
+     {
+      "type": "muted",
+      "text": "  next session: rules are already in context"
+     }
+    ]
+   },
+   "rule": "One rules file per repo. Commit it. Keep it under a page."
+  },
+  {
+   "id": "permissions",
+   "title": "Give the agent a leash you can see",
+   "body": "Permission systems exist so that a wrong instruction costs a keystroke instead of a deleted database. Use them: ask for writes, allow reads, deny the dangerous commands.",
+   "before": {
+    "lines": [
+     {
+      "type": "muted",
+      "text": "  everything allowed, no prompts"
+     },
+     {
+      "type": "tool",
+      "text": "  Bash(1)   rm -rf ./data"
+     },
+     {
+      "type": "warn",
+      "text": "  ! gone. that was not what you asked for."
+     }
+    ]
+   },
+   "after": {
+    "lines": [
+     {
+      "type": "muted",
+      "text": "  // opencode.json"
+     },
+     {
+      "type": "accent",
+      "text": "  \"permission\": {"
+     },
+     {
+      "type": "accent",
+      "text": "    \"edit\": \"ask\","
+     },
+     {
+      "type": "accent",
+      "text": "    \"bash\": { \"*\": \"ask\", \"git status\": \"allow\", \"pytest*\": \"allow\" }"
+     },
+     {
+      "type": "accent",
+      "text": "  }"
+     },
+     {
+      "type": "muted",
+      "text": "  rm -rf now stops and asks"
+     }
+    ]
+   },
+   "rule": "read: allow | write: ask | destructive commands: deny"
+  },
+  {
+   "id": "budget",
+   "title": "Watch the tokens, route the models",
+   "body": "Most agent cost is context re-reading, not thinking. Route cheap models to exploration and strong models to edits, and read the stats command until the numbers make sense.",
+   "before": {
+    "lines": [
+     {
+      "type": "muted",
+      "text": "  one expensive model for everything"
+     },
+     {
+      "type": "output",
+      "text": "  1.42M input tokens  |  $12.80 for one afternoon"
+     }
+    ]
+   },
+   "after": {
+    "lines": [
+     {
+      "type": "muted",
+      "text": "  // opencode.json"
+     },
+     {
+      "type": "accent",
+      "text": "  \"agent\": {"
+     },
+     {
+      "type": "accent",
+      "text": "    \"plan\":  { \"model\": \"opencode/mimo-v2.5-flash-free\" },"
+     },
+     {
+      "type": "accent",
+      "text": "    \"build\": { \"model\": \"opencode/mimo-v2.5-pro-free\" }"
+     },
+     {
+      "type": "accent",
+      "text": "  }"
+     },
+     {
+      "type": "output",
+      "text": "  1.42M input tokens  |  $0.38 for the same afternoon"
+     }
+    ]
+   },
+   "rule": "Cheap model for the plan, strong model for the code, stats for the truth."
+  }
+ ],
+ "model_guide": [
+  {
+   "id": "pick",
+   "title": "Pick by task, not by leaderboard",
+   "body": "A frontier model is the wrong tool for half of what agents do. Reading a file, grepping a symbol, renaming a variable - these want speed. Writing a tricky diff wants capability.",
+   "rows": [
+    [
+     "Plan / explore / read",
+     "Fast small model (flash tier, local 8B)",
+     "Cheap, high volume, enough to read code"
+    ],
+    [
+     "Edit / refactor",
+     "Mid-tier coding model",
+     "Balance of price and patch quality"
+    ],
+    [
+     "Architecture / hard bugs",
+     "Frontier reasoning model",
+     "Worst case is worth the price"
+    ],
+    [
+     "Bulk chores (docs, tests, renames)",
+     "Free tier or local model",
+     "Volume work should never cost money"
+    ]
+   ]
+  },
+  {
+   "id": "context",
+   "title": "Context window is the real limit",
+   "body": "Before choosing a model, count what you are about to send: rules file, repo map, history, tool outputs. A 200K window does not help if the agent re-reads the repository on every turn.",
+   "rows": [
+    [
+     "Typical repo session",
+     "40-120K",
+     "Most agent loops fit in a large window"
+    ],
+    [
+     "Large monorepo with repo map",
+     "120-400K",
+     "Long-context models start to pay off"
+    ],
+    [
+     "Whole-book context",
+     "400K+",
+     "Rare; usually a sign you want retrieval instead"
+    ]
+   ]
+  },
+  {
+   "id": "free",
+   "title": "The free tiers are genuinely usable",
+   "body": "Free catalogues (OpenCode Zen, Groq, Cerebras, NVIDIA NIM, Gemini flash, OpenRouter's :free models) are enough for learning, for bulk chores and for a whole project if you route sensibly. Start free, upgrade only where a specific task needs it.",
+   "rows": [
+    [
+     "Gemini flash",
+     "~1,500 requests/day",
+     "Long context, generous quota, no card"
+    ],
+    [
+     "Groq",
+     "~14,400 requests/day (8B)",
+     "Fastest responses; great for exploration agents"
+    ],
+    [
+     "OpenCode Zen",
+     "9 free models",
+     "Curated, verified, works with opencode out of the box"
+    ],
+    [
+     "Cerebras",
+     "~1.5M tokens/day",
+     "Very high throughput for bulk work"
+    ],
+    [
+     "OpenRouter :free",
+     "50 requests/day",
+     "Any model, rotate the id when one is busy"
+    ]
+   ]
+  },
+  {
+   "id": "local",
+   "title": "Local models are the privacy play",
+   "body": "Ollama and LM Studio expose an OpenAI-compatible endpoint, so any CLI agent can use a model that never leaves the machine. Point the agent at http://localhost:11434/v1 and carry on.",
+   "rows": [
+    [
+     "Ollama",
+     "http://localhost:11434/v1",
+     "llama3.2, qwen2.5-coder, gemma3"
+    ],
+    [
+     "LM Studio",
+     "http://localhost:1234/v1",
+     "any loaded GGUF model"
+    ],
+    [
+     "vLLM",
+     "http://localhost:8000/v1",
+     "your own fine-tune, served locally"
+    ]
+   ]
+  },
+  {
+   "id": "reasoning",
+   "title": "Reasoning effort is a dial, not a personality",
+   "body": "Reasoning models let you spend more compute per answer. In opencode that is a model variant (ctrl+t cycles it), and in an agent config you can pass provider-specific options such as reasoningEffort straight through. Turn it up for hard architecture, turn it down for mechanical edits - the latency and token bill scale with it.",
+   "rows": [
+    [
+     "Mechanical edit",
+     "low effort",
+     "Fast, cheap, and usually enough"
+    ],
+    [
+     "Multi-file refactor",
+     "medium",
+     "The default for build agents"
+    ],
+    [
+     "Architecture or a nasty bug",
+     "high",
+     "Slow and pricey, worth it here"
+    ],
+    [
+     "Cost control",
+     "step limit",
+     "A step cap bounds the spend more reliably"
+    ]
+   ]
+  },
+  {
+   "id": "caching",
+   "title": "Prompt caching is free speed",
+   "body": "Most providers cache the stable prefix of a prompt - your rules file, the repo map, the tool definitions. Keep that prefix byte-identical between requests and the cached portion costs a fraction. Put the volatile part (your new message) at the end, never the front.",
+   "rows": [
+    [
+     "Stable prefix",
+     "rules + tools + repo map",
+     "Cache hit, cheap"
+    ],
+    [
+     "Volatile tail",
+     "your latest message",
+     "Always re-read"
+    ],
+    [
+     "Don't",
+     "reorder the system prompt",
+     "One changed byte invalidates the cache"
+    ],
+    [
+     "Measure it",
+     "opencode stats",
+     "Compare token counts across runs"
+    ]
+   ]
+  },
+  {
+   "id": "routers",
+   "title": "Routers pick the model for you",
+   "body": "A router sits between the agent and several providers and picks per task - a cheap model for exploration, a frontier one for the diff. This is the same routing you would write in opencode.json, done dynamically, and it is where multi-provider agents earn their keep.",
+   "rows": [
+    [
+     "opencode.json",
+     "static per agent",
+     "Plan to cheap, build to strong"
+    ],
+    [
+     "Provider router",
+     "dynamic per request",
+     "Picks by difficulty or quota"
+    ],
+    [
+     "Control plane",
+     "dynamic per team",
+     "Rotation when a provider runs out"
+    ],
+    [
+     "Watch for",
+     "silent fallbacks",
+     "You get a worse answer and never know why"
+    ]
+   ]
+  }
+ ],
+ "config_snippets": [
+  {
+   "title": "Route a cheap model to planning and a strong one to edits",
+   "language": "json",
+   "code": "{\n  \"$schema\": \"https://opencode.ai/config.json\",\n  \"agent\": {\n    \"plan\":  { \"model\": \"opencode/mimo-v2.5-flash-free\" },\n    \"build\": { \"model\": \"opencode/mimo-v2.5-pro-free\" }\n  }\n}"
+  },
+  {
+   "title": "Bring your own provider with any OpenAI-compatible endpoint",
+   "language": "json",
+   "code": "{\n  \"$schema\": \"https://opencode.ai/config.json\",\n  \"provider\": {\n    \"my-gateway\": {\n      \"npm\": \"@ai-sdk/openai-compatible\",\n      \"options\": { \"baseURL\": \"https://api.example.com/v1\" },\n      \"models\": { \"my-model\": { \"name\": \"My Model\" } }\n    }\n  }\n}"
+  },
+  {
+   "title": "Ask before writes, allow the boring reads",
+   "language": "json",
+   "code": "{\n  \"$schema\": \"https://opencode.ai/config.json\",\n  \"permission\": {\n    \"edit\": \"ask\",\n    \"bash\": { \"*\": \"ask\", \"git status\": \"allow\", \"pytest*\": \"allow\" }\n  }\n}"
+  },
+  {
+   "title": "A custom agent that can only read",
+   "language": "markdown",
+   "code": "---\ndescription: Reviews code for security issues\nmode: subagent\nmodel: opencode/mimo-v2.5-flash-free\npermission:\n  edit: deny\n  bash:\n    \"*\": ask\n    \"grep *\": allow\n---\nYou are a security reviewer. Report findings; never change files."
+  }
+ ],
+ "comparison": [
+  {
+   "feature": "Runs in a terminal",
+   "values": {
+    "opencode": true,
+    "codex": true,
+    "gemini": true,
+    "claude": true,
+    "aider": true,
+    "goose": true,
+    "openhands": true
+   }
+  },
+  {
+   "feature": "Ships an IDE extension",
+   "values": {
+    "opencode": true,
+    "codex": true,
+    "gemini": true,
+    "claude": true,
+    "aider": false,
+    "goose": true,
+    "openhands": false
+   }
+  },
+  {
+   "feature": "Open source",
+   "values": {
+    "opencode": true,
+    "codex": true,
+    "gemini": true,
+    "claude": false,
+    "aider": true,
+    "goose": true,
+    "openhands": true
+   }
+  },
+  {
+   "feature": "Works with any model provider",
+   "values": {
+    "opencode": true,
+    "codex": false,
+    "gemini": false,
+    "claude": false,
+    "aider": true,
+    "goose": true,
+    "openhands": true
+   }
+  },
+  {
+   "feature": "Free tier that is enough to learn on",
+   "values": {
+    "opencode": true,
+    "codex": true,
+    "gemini": true,
+    "claude": false,
+    "aider": true,
+    "goose": true,
+    "openhands": true
+   }
+  },
+  {
+   "feature": "MCP servers",
+   "values": {
+    "opencode": true,
+    "codex": true,
+    "gemini": true,
+    "claude": true,
+    "aider": false,
+    "goose": true,
+    "openhands": true
+   }
+  },
+  {
+   "feature": "Custom subagents",
+   "values": {
+    "opencode": true,
+    "codex": false,
+    "gemini": false,
+    "claude": true,
+    "aider": false,
+    "goose": false,
+    "openhands": true
+   }
+  },
+  {
+   "feature": "Scriptable / headless",
+   "values": {
+    "opencode": true,
+    "codex": true,
+    "gemini": true,
+    "claude": true,
+    "aider": true,
+    "goose": true,
+    "openhands": true
+   }
+  },
+  {
+   "feature": "Every change is reversible",
+   "values": {
+    "opencode": true,
+    "codex": true,
+    "gemini": true,
+    "claude": true,
+    "aider": true,
+    "goose": false,
+    "openhands": false
+   }
+  }
+ ],
+ "providers": [
+  {
+   "id": "gemini",
+   "label": "Google Gemini (AI Studio)",
+   "kind": "gemini",
+   "tier": "free",
+   "tags": [
+    "free",
+    "multimodal",
+    "long-context"
+   ],
+   "note": "Free tier with no credit card. Generous flash quotas and 1M context.",
+   "signup_url": "https://aistudio.google.com/apikey",
+   "requires_key": true,
+   "default_base_url": "https://generativelanguage.googleapis.com/v1beta",
+   "env_key": "GEMINI_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "groq",
+   "label": "Groq",
+   "kind": "openai_compat",
+   "tier": "free",
+   "tags": [
+    "free",
+    "fastest"
+   ],
+   "note": "Free developer tier. Extremely fast LPU inference for Llama, Qwen and Kimi.",
+   "signup_url": "https://console.groq.com/keys",
+   "requires_key": true,
+   "default_base_url": "https://api.groq.com/openai/v1",
+   "env_key": "GROQ_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "opencode_zen",
+   "label": "OpenCode Zen",
+   "kind": "openai_compat",
+   "tier": "free",
+   "tags": [
+    "free",
+    "coding"
+   ],
+   "note": "Curated free coding gateway. OpenAI-compatible, no credit card.",
+   "signup_url": "https://opencode.ai/zen",
+   "requires_key": true,
+   "default_base_url": "https://opencode.ai/zen/v1",
+   "env_key": "OPENCODE_ZEN_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "cerebras",
+   "label": "Cerebras",
+   "kind": "openai_compat",
+   "tier": "free",
+   "tags": [
+    "free",
+    "fastest"
+   ],
+   "note": "Free developer tier with very high token throughput.",
+   "signup_url": "https://cloud.cerebras.ai/",
+   "requires_key": true,
+   "default_base_url": "https://api.cerebras.ai/v1",
+   "env_key": "CEREBRAS_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "openrouter",
+   "label": "OpenRouter",
+   "kind": "openai_compat",
+   "tier": "free+paid",
+   "tags": [
+    "free",
+    "multi-model",
+    "aggregator"
+   ],
+   "note": "Any model from one key. Free models use the ':free' suffix.",
+   "signup_url": "https://openrouter.ai/keys",
+   "requires_key": true,
+   "default_base_url": "https://openrouter.ai/api/v1",
+   "env_key": "OPENROUTER_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "nvidia",
+   "label": "NVIDIA NIM",
+   "kind": "openai_compat",
+   "tier": "free",
+   "tags": [
+    "free",
+    "open-weights"
+   ],
+   "note": "Free credits and rate-limited endpoints for accelerated open models.",
+   "signup_url": "https://build.nvidia.com/",
+   "requires_key": true,
+   "default_base_url": "https://integrate.api.nvidia.com/v1",
+   "env_key": "NVIDIA_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "zai",
+   "label": "Z.ai (GLM)",
+   "kind": "openai_compat",
+   "tier": "free",
+   "tags": [
+    "free",
+    "long-context"
+   ],
+   "note": "GLM flash models are permanently free with a signup bonus.",
+   "signup_url": "https://z.ai/manage-apikey/apikey-list",
+   "requires_key": true,
+   "default_base_url": "https://api.z.ai/api/paas/v4",
+   "env_key": "ZAI_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "siliconflow",
+   "label": "SiliconFlow",
+   "kind": "openai_compat",
+   "tier": "free",
+   "tags": [
+    "free",
+    "open-weights"
+   ],
+   "note": "Dozens of open models at zero cost.",
+   "signup_url": "https://cloud.siliconflow.cn/account/ak",
+   "requires_key": true,
+   "default_base_url": "https://api.siliconflow.cn/v1",
+   "env_key": "SILICONFLOW_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "cloudflare",
+   "label": "Cloudflare Workers AI",
+   "kind": "openai_compat",
+   "tier": "free",
+   "tags": [
+    "free",
+    "edge"
+   ],
+   "note": "10k neurons/day free. Replace YOUR_ACCOUNT_ID in the base URL with your account id.",
+   "signup_url": "https://dash.cloudflare.com/?tab=AI",
+   "requires_key": true,
+   "default_base_url": "https://api.cloudflare.com/client/v4/accounts/YOUR_ACCOUNT_ID/ai/run/v1",
+   "env_key": "CLOUDFLARE_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "mistral",
+   "label": "Mistral AI",
+   "kind": "openai_compat",
+   "tier": "free+paid",
+   "tags": [
+    "free",
+    "eu-hosted",
+    "coding"
+   ],
+   "note": "Free tier on small models; Codestral handles fill-in-the-middle.",
+   "signup_url": "https://console.mistral.ai/api-keys",
+   "requires_key": true,
+   "default_base_url": "https://api.mistral.ai/v1",
+   "env_key": "MISTRAL_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "openai",
+   "label": "OpenAI",
+   "kind": "openai_compat",
+   "tier": "paid",
+   "tags": [
+    "paid",
+    "tools",
+    "json-mode"
+   ],
+   "note": "Broadest tool support and the strongest structured-output guarantees.",
+   "signup_url": "https://platform.openai.com/api-keys",
+   "requires_key": true,
+   "default_base_url": "https://api.openai.com/v1",
+   "env_key": "OPENAI_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "anthropic",
+   "label": "Anthropic",
+   "kind": "anthropic",
+   "tier": "paid",
+   "tags": [
+    "paid",
+    "long-context"
+   ],
+   "note": "Long-context reasoning models with strong instruction following.",
+   "signup_url": "https://console.anthropic.com/settings/keys",
+   "requires_key": true,
+   "default_base_url": "https://api.anthropic.com/v1",
+   "env_key": "ANTHROPIC_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "xai",
+   "label": "xAI Grok",
+   "kind": "openai_compat",
+   "tier": "paid",
+   "tags": [
+    "paid",
+    "coding"
+   ],
+   "note": "Grok flagship and coding models.",
+   "signup_url": "https://console.x.ai/",
+   "requires_key": true,
+   "default_base_url": "https://api.x.ai/v1",
+   "env_key": "XAI_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "deepseek",
+   "label": "DeepSeek",
+   "kind": "openai_compat",
+   "tier": "paid",
+   "tags": [
+    "paid",
+    "reasoning"
+   ],
+   "note": "Strong reasoning (deepseek-reasoner) and cheap chat models.",
+   "signup_url": "https://platform.deepseek.com/api_keys",
+   "requires_key": true,
+   "default_base_url": "https://api.deepseek.com/v1",
+   "env_key": "DEEPSEEK_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "together",
+   "label": "Together AI",
+   "kind": "openai_compat",
+   "tier": "free+paid",
+   "tags": [
+    "credits",
+    "open-weights"
+   ],
+   "note": "Sign-up credits for open models and fast inference endpoints.",
+   "signup_url": "https://api.together.ai/settings/api-keys",
+   "requires_key": true,
+   "default_base_url": "https://api.together.xyz/v1",
+   "env_key": "TOGETHER_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "fireworks",
+   "label": "Fireworks AI",
+   "kind": "openai_compat",
+   "tier": "free+paid",
+   "tags": [
+    "credits",
+    "open-weights"
+   ],
+   "note": "Optimized open-model serving with function calling.",
+   "signup_url": "https://fireworks.ai/api-keys",
+   "requires_key": true,
+   "default_base_url": "https://api.fireworks.ai/inference/v1",
+   "env_key": "FIREWORKS_API_KEY",
+   "has_key": false
+  },
+  {
+   "id": "ollama",
+   "label": "Ollama (local)",
+   "kind": "openai_compat",
+   "tier": "local",
+   "tags": [
+    "local",
+    "offline",
+    "free"
+   ],
+   "note": "Run models on your own machine. Unlimited and private.",
+   "signup_url": "https://ollama.com/download",
+   "requires_key": false,
+   "default_base_url": "http://localhost:11434/v1",
+   "env_key": "",
+   "has_key": false
+  },
+  {
+   "id": "lmstudio",
+   "label": "LM Studio (local)",
+   "kind": "openai_compat",
+   "tier": "local",
+   "tags": [
+    "local",
+    "offline",
+    "free"
+   ],
+   "note": "Local OpenAI-compatible server from the LM Studio app.",
+   "signup_url": "https://lmstudio.ai/",
+   "requires_key": false,
+   "default_base_url": "http://localhost:1234/v1",
+   "env_key": "",
+   "has_key": false
+  },
+  {
+   "id": "custom",
+   "label": "Custom OpenAI-compatible endpoint",
+   "kind": "openai_compat",
+   "tier": "free+paid",
+   "tags": [
+    "custom"
+   ],
+   "note": "Any gateway that speaks /v1/chat/completions. Set the base URL and key yourself.",
+   "signup_url": "",
+   "requires_key": true,
+   "default_base_url": "",
+   "env_key": "CUSTOM_API_KEY",
+   "has_key": false
+  }
+ ],
+ "models": [
+  {
+   "id": "gemini-3.8-flash",
+   "name": "Gemini 3.8 Flash",
+   "provider": "gemini",
+   "provider_label": "Google Gemini",
+   "description": "Fast multimodal - free tier.",
+   "context_window": "1M",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "gemini-3.8-flash-lite",
+   "name": "Gemini 3.8 Flash Lite",
+   "provider": "gemini",
+   "provider_label": "Google Gemini",
+   "description": "Cheapest fast multimodal - free tier.",
+   "context_window": "1M",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "gemini-3-flash",
+   "name": "Gemini 3 Flash",
+   "provider": "gemini",
+   "provider_label": "Google Gemini",
+   "description": "Balanced flash model - free tier.",
+   "context_window": "1M",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "gemini-flash-latest",
+   "name": "Gemini Flash (latest)",
+   "provider": "gemini",
+   "provider_label": "Google Gemini",
+   "description": "Auto-updating flash alias - free tier.",
+   "context_window": "1M",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "gemini-3.1-pro-preview",
+   "name": "Gemini 3.1 Pro",
+   "provider": "gemini",
+   "provider_label": "Google Gemini",
+   "description": "Deep reasoning - free tier preview.",
+   "context_window": "1M",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "llama-3.3-70b-versatile",
+   "name": "Llama 3.3 70B",
+   "provider": "groq",
+   "provider_label": "Groq",
+   "description": "Fast and capable - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "llama-3.1-8b-instant",
+   "name": "Llama 3.1 8B",
+   "provider": "groq",
+   "provider_label": "Groq",
+   "description": "Fast small model - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "llama-4-scout-17b-16e-instruct",
+   "name": "Llama 4 Scout",
+   "provider": "groq",
+   "provider_label": "Groq",
+   "description": "MoE model - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "qwen3-32b",
+   "name": "Qwen3 32B",
+   "provider": "groq",
+   "provider_label": "Groq",
+   "description": "Strong open model - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "kimi-k2-instruct",
+   "name": "Kimi K2",
+   "provider": "groq",
+   "provider_label": "Groq",
+   "description": "Agentic model - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "gpt-oss-20b",
+   "name": "GPT-OSS 20B",
+   "provider": "groq",
+   "provider_label": "Groq",
+   "description": "Open-weight reasoning - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "minimax-m2.5-free",
+   "name": "MiniMax M2.5",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "High SWE-bench coding model - free.",
+   "context_window": "200K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "deepseek-v4-flash-free",
+   "name": "DeepSeek V4 Flash",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Fast general model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "mimo-v2.5-pro-free",
+   "name": "MiMo V2.5 Pro",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Reasoning model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "mimo-v2.5-omni-free",
+   "name": "MiMo V2.5 Omni",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Omni-modal model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "mimo-v2.5-flash-free",
+   "name": "MiMo V2.5 Flash",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Low-latency model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "nemotron-3-ultra-free",
+   "name": "Nemotron 3 Ultra",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Agentic model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "nemotron-3-super-free",
+   "name": "Nemotron 3 Super",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Balanced model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "qwen-3.6-plus-free",
+   "name": "Qwen 3.6 Plus",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Flagship open model - free.",
+   "context_window": "256K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "trinity-large-preview-free",
+   "name": "Trinity Large Preview",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Preview model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "north-mini-code-free",
+   "name": "North Mini Code",
+   "provider": "opencode_zen",
+   "provider_label": "OpenCode Zen",
+   "description": "Small coding model - free.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "llama-3.3-70b",
+   "name": "Llama 3.3 70B",
+   "provider": "cerebras",
+   "provider_label": "Cerebras",
+   "description": "Ultra-fast inference - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "llama3.1-8b",
+   "name": "Llama 3.1 8B",
+   "provider": "cerebras",
+   "provider_label": "Cerebras",
+   "description": "Small and quick - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "qwen3-235b-a22b-instruct",
+   "name": "Qwen3 235B",
+   "provider": "cerebras",
+   "provider_label": "Cerebras",
+   "description": "Huge MoE - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "gpt-oss-120b",
+   "name": "GPT-OSS 120B",
+   "provider": "cerebras",
+   "provider_label": "Cerebras",
+   "description": "Open-weight reasoning - free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "qwen/qwen3.6-plus:free",
+   "name": "Qwen 3.6 Plus",
+   "provider": "openrouter",
+   "provider_label": "OpenRouter",
+   "description": "Free tier via OpenRouter.",
+   "context_window": "256K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "qwen/qwen3-coder-480b:free",
+   "name": "Qwen3 Coder 480B",
+   "provider": "openrouter",
+   "provider_label": "OpenRouter",
+   "description": "Free coding model.",
+   "context_window": "256K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "mistralai/mistral-small-3.1-24b-instruct:free",
+   "name": "Mistral Small 3.1",
+   "provider": "openrouter",
+   "provider_label": "OpenRouter",
+   "description": "Free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "deepseek/deepseek-chat:free",
+   "name": "DeepSeek V3",
+   "provider": "openrouter",
+   "provider_label": "OpenRouter",
+   "description": "Free tier.",
+   "context_window": "64K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "meta-llama/llama-3.3-70b-instruct:free",
+   "name": "Llama 3.3 70B",
+   "provider": "openrouter",
+   "provider_label": "OpenRouter",
+   "description": "Free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "anthropic/claude-sonnet-4.5",
+   "name": "Claude Sonnet 4.5",
+   "provider": "openrouter",
+   "provider_label": "OpenRouter",
+   "description": "Paid tier via OpenRouter.",
+   "context_window": "200K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "openai/gpt-4o-mini",
+   "name": "GPT-4o mini",
+   "provider": "openrouter",
+   "provider_label": "OpenRouter",
+   "description": "Paid tier via OpenRouter.",
+   "context_window": "128K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "meta/llama-3.3-70b-instruct",
+   "name": "Llama 3.3 70B",
+   "provider": "nvidia",
+   "provider_label": "NVIDIA NIM",
+   "description": "Accelerated endpoint - free credits.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "qwen/qwen3-235b-a22b-instruct",
+   "name": "Qwen3 235B",
+   "provider": "nvidia",
+   "provider_label": "NVIDIA NIM",
+   "description": "MoE endpoint - free credits.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "deepseek-ai/deepseek-r1",
+   "name": "DeepSeek R1",
+   "provider": "nvidia",
+   "provider_label": "NVIDIA NIM",
+   "description": "Reasoning model - free credits.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "mistralai/mistral-large-2411",
+   "name": "Mistral Large",
+   "provider": "nvidia",
+   "provider_label": "NVIDIA NIM",
+   "description": "Open model - free credits.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "glm-4.7-flash",
+   "name": "GLM 4.7 Flash",
+   "provider": "zai",
+   "provider_label": "Z.ai",
+   "description": "Permanently free flash model.",
+   "context_window": "200K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "glm-4.5-flash",
+   "name": "GLM 4.5 Flash",
+   "provider": "zai",
+   "provider_label": "Z.ai",
+   "description": "Free flash model.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "glm-4-flash",
+   "name": "GLM 4 Flash",
+   "provider": "zai",
+   "provider_label": "Z.ai",
+   "description": "Legacy free model.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "Qwen/Qwen3-32B",
+   "name": "Qwen3 32B",
+   "provider": "siliconflow",
+   "provider_label": "SiliconFlow",
+   "description": "Open model at zero cost.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "deepseek-ai/DeepSeek-V3",
+   "name": "DeepSeek V3",
+   "provider": "siliconflow",
+   "provider_label": "SiliconFlow",
+   "description": "Open model at zero cost.",
+   "context_window": "64K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "THUDM/glm-4-9b-chat",
+   "name": "GLM 4 9B",
+   "provider": "siliconflow",
+   "provider_label": "SiliconFlow",
+   "description": "Small open model at zero cost.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+   "name": "Llama 3.3 70B",
+   "provider": "cloudflare",
+   "provider_label": "Cloudflare Workers AI",
+   "description": "Edge model - free neurons.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "@cf/google/gemma-3-12b-it",
+   "name": "Gemma 3 12B",
+   "provider": "cloudflare",
+   "provider_label": "Cloudflare Workers AI",
+   "description": "Edge model - free neurons.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "@cf/qwen/qwen3-30b-a3b",
+   "name": "Qwen3 30B A3B",
+   "provider": "cloudflare",
+   "provider_label": "Cloudflare Workers AI",
+   "description": "Edge MoE model - free neurons.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "mistral-large-latest",
+   "name": "Mistral Large",
+   "provider": "mistral",
+   "provider_label": "Mistral AI",
+   "description": "Flagship Mistral model.",
+   "context_window": "128K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "mistral-medium-latest",
+   "name": "Mistral Medium",
+   "provider": "mistral",
+   "provider_label": "Mistral AI",
+   "description": "Balanced model.",
+   "context_window": "128K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "mistral-small-latest",
+   "name": "Mistral Small",
+   "provider": "mistral",
+   "provider_label": "Mistral AI",
+   "description": "Small model on the free tier.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "codestral-latest",
+   "name": "Codestral",
+   "provider": "mistral",
+   "provider_label": "Mistral AI",
+   "description": "Fill-in-the-middle code model.",
+   "context_window": "256K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "open-mistral-nemo",
+   "name": "Mistral Nemo",
+   "provider": "mistral",
+   "provider_label": "Mistral AI",
+   "description": "Open-weight model.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "deepseek-chat",
+   "name": "DeepSeek V3",
+   "provider": "deepseek",
+   "provider_label": "DeepSeek",
+   "description": "Cheap strong chat model.",
+   "context_window": "64K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "deepseek-reasoner",
+   "name": "DeepSeek R1",
+   "provider": "deepseek",
+   "provider_label": "DeepSeek",
+   "description": "Step-by-step reasoning model.",
+   "context_window": "64K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "gpt-4o-mini",
+   "name": "GPT-4o mini",
+   "provider": "openai",
+   "provider_label": "OpenAI",
+   "description": "Fast, capable, cost-efficient default.",
+   "context_window": "128K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "gpt-4o",
+   "name": "GPT-4o",
+   "provider": "openai",
+   "provider_label": "OpenAI",
+   "description": "Flagship multimodal model.",
+   "context_window": "128K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "gpt-4.1",
+   "name": "GPT-4.1",
+   "provider": "openai",
+   "provider_label": "OpenAI",
+   "description": "Strong reasoning and coding.",
+   "context_window": "1M",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "gpt-4.1-mini",
+   "name": "GPT-4.1 mini",
+   "provider": "openai",
+   "provider_label": "OpenAI",
+   "description": "Lightweight GPT-4.1 variant.",
+   "context_window": "1M",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "o4-mini",
+   "name": "o4 mini",
+   "provider": "openai",
+   "provider_label": "OpenAI",
+   "description": "Efficient reasoning model.",
+   "context_window": "200K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "claude-sonnet-4-5-20250929",
+   "name": "Claude Sonnet 4.5",
+   "provider": "anthropic",
+   "provider_label": "Anthropic",
+   "description": "Balanced intelligence and speed.",
+   "context_window": "200K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "claude-opus-4-1-20250805",
+   "name": "Claude Opus 4.1",
+   "provider": "anthropic",
+   "provider_label": "Anthropic",
+   "description": "Highest capability Claude.",
+   "context_window": "200K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "claude-3-5-haiku-20241022",
+   "name": "Claude 3.5 Haiku",
+   "provider": "anthropic",
+   "provider_label": "Anthropic",
+   "description": "Fast, affordable Claude.",
+   "context_window": "200K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "grok-4",
+   "name": "Grok 4",
+   "provider": "xai",
+   "provider_label": "xAI Grok",
+   "description": "xAI flagship model.",
+   "context_window": "256K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "grok-3",
+   "name": "Grok 3",
+   "provider": "xai",
+   "provider_label": "xAI Grok",
+   "description": "Previous-generation Grok.",
+   "context_window": "131K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "grok-3-mini",
+   "name": "Grok 3 mini",
+   "provider": "xai",
+   "provider_label": "xAI Grok",
+   "description": "Fast Grok variant.",
+   "context_window": "131K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "grok-code-1",
+   "name": "Grok Code Fast 1",
+   "provider": "xai",
+   "provider_label": "xAI Grok",
+   "description": "Coding-oriented Grok.",
+   "context_window": "256K",
+   "free": false,
+   "requires_key": true
+  },
+  {
+   "id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+   "name": "Llama 3.3 70B Turbo",
+   "provider": "together",
+   "provider_label": "Together AI",
+   "description": "Fast open model on credits.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "deepseek-ai/DeepSeek-V3",
+   "name": "DeepSeek V3",
+   "provider": "together",
+   "provider_label": "Together AI",
+   "description": "Open model on credits.",
+   "context_window": "64K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "Qwen/Qwen2.5-72B-Instruct",
+   "name": "Qwen2.5 72B",
+   "provider": "together",
+   "provider_label": "Together AI",
+   "description": "Open model on credits.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "accounts/fireworks/models/llama-v3p3-70b-instruct",
+   "name": "Llama 3.3 70B",
+   "provider": "fireworks",
+   "provider_label": "Fireworks AI",
+   "description": "Optimized open model.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "accounts/fireworks/models/deepseek-v3",
+   "name": "DeepSeek V3",
+   "provider": "fireworks",
+   "provider_label": "Fireworks AI",
+   "description": "Optimized open model.",
+   "context_window": "64K",
+   "free": true,
+   "requires_key": true
+  },
+  {
+   "id": "llama3.2",
+   "name": "Llama 3.2 (local)",
+   "provider": "ollama",
+   "provider_label": "Ollama",
+   "description": "Local model via Ollama.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": false
+  },
+  {
+   "id": "qwen2.5-coder",
+   "name": "Qwen 2.5 Coder (local)",
+   "provider": "ollama",
+   "provider_label": "Ollama",
+   "description": "Local coding model.",
+   "context_window": "32K",
+   "free": true,
+   "requires_key": false
+  },
+  {
+   "id": "mistral",
+   "name": "Mistral (local)",
+   "provider": "ollama",
+   "provider_label": "Ollama",
+   "description": "Local Mistral model.",
+   "context_window": "32K",
+   "free": true,
+   "requires_key": false
+  },
+  {
+   "id": "gemma3",
+   "name": "Gemma 3 (local)",
+   "provider": "ollama",
+   "provider_label": "Ollama",
+   "description": "Local Gemma model.",
+   "context_window": "128K",
+   "free": true,
+   "requires_key": false
+  }
+ ],
+ "harness_layers": [
+  {
+   "id": "model",
+   "title": "Model",
+   "body": "The raw next-token predictor. It knows nothing about your repo until the harness puts your files in front of it.",
+   "control": "Which model, which reasoning effort, which temperature, how many tokens.",
+   "fails": "A model that cannot do the task guesses instead of checking, and the harness never finds out."
+  },
+  {
+   "id": "tools",
+   "title": "Tool protocol",
+   "body": "How the model asks for things: read, edit, bash, grep, and whatever an MCP server exposes. The schema is the API.",
+   "control": "Tool descriptions, argument schemas, which tools exist at all.",
+   "fails": "A vague tool description produces vague arguments, and the model retries forever."
+  },
+  {
+   "id": "context",
+   "title": "Context manager",
+   "body": "What gets assembled into the prompt: rules, repo map, file contents, history, tool results. The most under-engineered part of every harness.",
+   "control": "What you inline, what you reference, when you compact.",
+   "fails": "The instruction you care about gets buried under 60K tokens of file contents."
+  },
+  {
+   "id": "loop",
+   "title": "Agent loop",
+   "body": "Observe, decide, act, observe again. Stop conditions, step budgets and retries live here.",
+   "control": "Max steps, retry policy, whether it re-plans or ploughs ahead.",
+   "fails": "A loop with no stop condition burns tokens until it hits a rate limit."
+  },
+  {
+   "id": "policy",
+   "title": "Policy layer",
+   "body": "Permissions, approvals, sandboxes, allow-lists. The part that decides what the agent can do without asking you.",
+   "control": "Ask, allow or deny per tool, per command pattern, per agent.",
+   "fails": "Everything allowed by default, so one bad turn deletes the database."
+  },
+  {
+   "id": "memory",
+   "title": "Memory",
+   "body": "What survives between sessions: rules files, skills, long-term memory stores, session history you can resume.",
+   "control": "What is written, when it is written, and how it is retrieved.",
+   "fails": "Memory that only ever appends, so yesterday's wrong answer fights today's right one."
+  },
+  {
+   "id": "interface",
+   "title": "Interface",
+   "body": "The TUI, the IDE panel, the web UI, the headless API. The same harness behind four different surfaces.",
+   "control": "Where the agent lives for you - terminal, editor, browser, pipeline.",
+   "fails": "A UI that hides the tool calls, so you cannot tell what it actually did."
+  }
+ ],
+ "harness_projects": [
+  {
+   "id": "pi",
+   "name": "pi",
+   "repo": "earendil-works/pi",
+   "stars": "116k",
+   "license": "MIT",
+   "tagline": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+   "why": "It is the harness as a library rather than a product. Read the loop, then read the tools, then read the TUI - it is the shortest path to understanding what every agent does between your prompt and the edit.",
+   "steal": "A minimal agent loop you can read in one sitting."
+  },
+  {
+   "id": "openclaw",
+   "name": "openclaw",
+   "repo": "openclaw/openclaw",
+   "stars": "392k",
+   "license": "MIT",
+   "tagline": "The AI that really does things. Any OS. Any Platform.",
+   "why": "The most-starred personal agent on GitHub. It shows how far the harness idea stretches when the loop is driven by scheduled tasks and real-world tools rather than a person at a terminal.",
+   "steal": "Scheduling and long-running task patterns."
+  },
+  {
+   "id": "hermes",
+   "name": "hermes-agent",
+   "repo": "NousResearch/hermes-agent",
+   "stars": "255k",
+   "license": "MIT",
+   "tagline": "The agent that grows with you",
+   "why": "Built around persistence: the agent keeps what it learned and gets better across sessions. The memory layer is the product, not a feature.",
+   "steal": "Memory that is written deliberately and retrieved selectively."
+  },
+  {
+   "id": "little-coder",
+   "name": "little-coder",
+   "repo": "itayinbarr/little-coder",
+   "stars": "2.7k",
+   "license": "Apache-2.0",
+   "tagline": "A harness optimized to smaller LLMs",
+   "why": "Every other harness assumes a frontier model. This one is engineered around a 7B-class model: tighter context, fewer tools, shorter loops. The best proof that the harness, not the model, does most of the work.",
+   "steal": "Tool minimisation and context discipline for cheap models."
+  },
+  {
+   "id": "late-cli",
+   "name": "late-cli",
+   "repo": "mlhher/late-cli",
+   "stars": "446",
+   "license": "MIT",
+   "tagline": "High-performance AI agent for long-horizon tasks and local models",
+   "why": "Focuses on the two things that break real projects: tasks that run for hours, and models that run on your own machine.",
+   "steal": "Resumable long-horizon runs and local-model paths."
+  },
+  {
+   "id": "alphacode",
+   "name": "alphacode",
+   "repo": "dragonked2/alphacode",
+   "stars": "369",
+   "license": "MIT",
+   "tagline": "Free MIT AI coding agent - no API key needed. Built-in free model, or bring your own",
+   "why": "The zero-friction path: no account, no key, no credit card. Useful to feel the loop before you spend money on it.",
+   "steal": "A no-setup first run."
+  },
+  {
+   "id": "org2",
+   "name": "ORG2",
+   "repo": "org2AI/ORG2",
+   "stars": "2.6k",
+   "license": "AGPL-3.0",
+   "tagline": "System of record for how agents build software: built-in rust harness and 20+ CLIs",
+   "why": "The interesting idea is the record: every agent action becomes an artifact you can query later. When three agents touch one repo, the history is the product.",
+   "steal": "Structured, queryable agent history."
+  },
+  {
+   "id": "cli-agent-orchestrator",
+   "name": "cli-agent-orchestrator",
+   "repo": "awslabs/cli-agent-orchestrator",
+   "stars": "1.4k",
+   "license": "Apache-2.0",
+   "tagline": "Multi-agent orchestration for AI coding CLIs - Claude Code, Kiro, Codex and more",
+   "why": "From AWS, and deliberately CLI-first. It treats the CLIs you already have as interchangeable workers instead of asking you to migrate.",
+   "steal": "Fan-out patterns across existing CLIs."
+  }
+ ],
+ "skill_format": {
+  "id": "skill",
+  "title": "Skills: the Agent Skills format",
+  "body": "A skill is a folder with one file in it: SKILL.md. The harness advertises the name and description of every skill it finds, and the model loads the full text on demand. That is progressive disclosure - the cheap part (a name and one line) is always in context, the expensive part (the whole procedure) is read only when the task calls for it.",
+  "why_it_matters": "Rules files are always loaded, so they should be short. Skills are loaded on demand, so they can be long and specific. That split is what lets you keep a thousand procedures around without paying for them in every session.",
+  "locations": [
+   ".opencode/skills/<name>/SKILL.md",
+   "~/.config/opencode/skills/<name>/SKILL.md",
+   ".claude/skills/<name>/SKILL.md",
+   ".agents/skills/<name>/SKILL.md"
+  ],
+  "frontmatter": {
+   "name": "required, 1-64 chars, lowercase with single hyphens, must match the folder name",
+   "description": "required, 1-1024 chars, specific enough for the model to choose correctly",
+   "license": "optional",
+   "compatibility": "optional",
+   "metadata": "optional string map - opencode/slash and opencode/autoinvoke live here"
+  },
+  "example": "---\nname: git-release\ndescription: Create consistent releases and changelogs\nlicense: MIT\ncompatibility: opencode\nmetadata:\n  audience: maintainers\n  workflow: github\n  opencode/slash: \"true\"\n  opencode/autoinvoke: \"false\"\n---\n## What I do\n- Draft release notes from merged PRs\n- Propose a version bump\n- Provide a copy-pasteable `gh release create` command\n## When to use me\nUse this when you are preparing a tagged release.",
+  "permissions": "{\n  \"permission\": {\n    \"skill\": {\n      \"*\": \"allow\",\n      \"pr-review\": \"allow\",\n      \"internal-*\": \"deny\",\n      \"experimental-*\": \"ask\"\n    }\n  }\n}",
+  "troubleshooting": [
+   "SKILL.md must be spelled in all caps",
+   "Frontmatter needs both name and description",
+   "Names must be unique across every discovery location",
+   "A denied skill is hidden from the agent entirely",
+   "metadata opencode/autoinvoke: \"false\" hides it from model-facing selection"
+  ]
+ },
+ "skill_packages": [
+  {
+   "id": "superpowers",
+   "name": "superpowers",
+   "repo": "obra/superpowers",
+   "stars": "302k",
+   "license": "MIT",
+   "tagline": "An agentic skills framework and software development methodology that works",
+   "what": "Skills plus a method: brainstorming, planning, subagent-driven development, and a review loop. The methodology is the point - the skills are just how it is delivered."
+  },
+  {
+   "id": "agent-skills",
+   "name": "agent-skills",
+   "repo": "addyosmani/agent-skills",
+   "stars": "108k",
+   "license": "MIT",
+   "tagline": "Production-grade engineering skills for AI coding agents",
+   "what": "A large catalogue of engineering practices formatted as skills - the cheapest way to see how the format scales."
+  },
+  {
+   "id": "mattpocock-skills",
+   "name": "skills",
+   "repo": "mattpocock/skills",
+   "stars": "298k",
+   "license": "MIT",
+   "tagline": "Skills for Real Engineers. Straight from my .agents directory",
+   "what": "A real engineer's personal skill set, published as-is. Good for copying the voice and the length of a well-written skill."
+  },
+  {
+   "id": "gstack",
+   "name": "gstack",
+   "repo": "garrytan/gstack",
+   "stars": "137k",
+   "license": "MIT",
+   "tagline": "Garry Tan's exact Claude Code setup: 23 opinionated tools",
+   "what": "23 tools that each pretend to be a different role - CEO, designer, engineering manager. Shows how far the role-play pattern goes."
+  },
+  {
+   "id": "ecc",
+   "name": "ECC",
+   "repo": "affaan-m/ECC",
+   "stars": "284k",
+   "license": "MIT",
+   "tagline": "The agent harness performance optimization system: skills, instincts, memory, security, research",
+   "what": "Treats the harness as the tunable surface - instincts, memory hygiene and security rules, all packaged as skills."
+  },
+  {
+   "id": "caveman",
+   "name": "caveman",
+   "repo": "JuliusBrussee/caveman",
+   "stars": "113k",
+   "license": "MIT",
+   "tagline": "Why use many tokens when few tokens do the trick - a skill plus a proxy that cuts context",
+   "what": "A proxy that rewrites requests to be smaller. A concrete demonstration that the harness, not the model, controls your bill."
+  },
+  {
+   "id": "ponytail",
+   "name": "ponytail",
+   "repo": "DietrichGebert/ponytail",
+   "stars": "169k",
+   "license": "MIT",
+   "tagline": "Makes your AI agent think like the laziest senior dev in the room",
+   "what": "A behaviour skill: the best code is the code you never write. Cheap tokens, fewer diffs."
+  },
+  {
+   "id": "claude-mem",
+   "name": "claude-mem",
+   "repo": "thedotmack/claude-mem",
+   "stars": "101k",
+   "license": "MIT",
+   "tagline": "Persistent context across sessions for every agent",
+   "what": "Captures what the agent did and makes it retrievable next session. The memory layer, shipped."
+  },
+  {
+   "id": "spec-kit",
+   "name": "spec-kit",
+   "repo": "github/spec-kit",
+   "stars": "142k",
+   "license": "MIT",
+   "tagline": "Toolkit to help you get started with spec-driven development",
+   "what": "From GitHub itself. The specification-first workflow: write the spec, generate the plan, then let the agent implement against it."
+  },
+  {
+   "id": "embeddedskills",
+   "name": "embeddedskills",
+   "repo": "zhinkgit/embeddedskills",
+   "stars": "756",
+   "license": "MIT",
+   "tagline": "An open-source collection of embedded development and debugging skills",
+   "what": "Domain-specific skills (embedded, drivers, protocols). Shows the format working for hardware work."
+  }
+ ],
+ "orchestrators": [
+  {
+   "id": "agent-deck",
+   "name": "agent-deck",
+   "repo": "asheshgoplani/agent-deck",
+   "stars": "1.1k",
+   "kind": "Terminal",
+   "what": "One TUI that hosts sessions from Claude, Gemini, opencode, Codex and more side by side."
+  },
+  {
+   "id": "atlas",
+   "name": "atlas",
+   "repo": "pacifio/atlas",
+   "stars": "9.6k",
+   "kind": "Version control",
+   "what": "Source control for agents: run several coding agents, track their changes, query them in one place."
+  },
+  {
+   "id": "nimbalyst",
+   "name": "nimbalyst",
+   "repo": "nimbalyst/nimbalyst",
+   "stars": "1.9k",
+   "kind": "Workspace",
+   "what": "An open-source visual workspace for Claude Code, Codex and opencode."
+  },
+  {
+   "id": "amux",
+   "name": "amux",
+   "repo": "mixpeek/amux",
+   "stars": "545",
+   "kind": "Control plane",
+   "what": "Run an AI engineering team: parallel Claude Code, Codex and more against one backlog."
+  },
+  {
+   "id": "claudexor",
+   "name": "claudexor",
+   "repo": "razzant/claudexor",
+   "stars": "515",
+   "kind": "Control plane",
+   "what": "Multi-harness control plane with quota-aware rotation across providers."
+  },
+  {
+   "id": "cc-switch",
+   "name": "cc-switch",
+   "repo": "farion1231/cc-switch",
+   "stars": "146k",
+   "kind": "Desktop",
+   "what": "A cross-platform desktop switcher for Claude Code, Codex, opencode, openclaw and Grok Build."
+  },
+  {
+   "id": "cli-continues",
+   "name": "cli-continues",
+   "repo": "yigitkonur/cli-continues",
+   "stars": "1.5k",
+   "kind": "Bridge",
+   "what": "Resume an AI coding session in a different tool - Claude Code, Copilot, Gemini, Codex, Cursor."
+  },
+  {
+   "id": "history-viewer",
+   "name": "claude-code-history-viewer",
+   "repo": "jhlee0409/claude-code-history-viewer",
+   "stars": "2.2k",
+   "kind": "Analytics",
+   "what": "Browse, search and analyse your agent history offline - Claude Code, Codex CLI, Copilot, Gemini CLI, Cursor, opencode."
+  }
+ ],
+ "protocols": [
+  {
+   "id": "mcp",
+   "name": "MCP - Model Context Protocol",
+   "what": "A standard for exposing tools to a model. Local servers run a command; remote servers are a URL. Tools appear alongside built-ins, prefixed with the server name.",
+   "portable": "Yes. The same server works in opencode, Claude Code, Gemini CLI and anything else that speaks MCP.",
+   "cost": "Every tool definition sits in the context window. Enable the servers a task needs, not the ones you might need.",
+   "example": "\"mcp\": { \"context7\": { \"type\": \"remote\", \"url\": \"https://mcp.context7.com/mcp\" } }"
+  },
+  {
+   "id": "acp",
+   "name": "ACP - Agent Client Protocol",
+   "what": "The editor-side counterpart to MCP: a standard for how an editor talks to an agent. opencode ships an ACP server over stdio.",
+   "portable": "Yes, in the other direction. One agent, many editors.",
+   "cost": "Low. It is a control channel, not a pile of tool schemas.",
+   "example": "opencode acp"
+  },
+  {
+   "id": "lsp",
+   "name": "LSP - Language Server Protocol",
+   "what": "Definitions, references, diagnostics and symbols. Editors have used it for years; harnesses use it to give a model real code intelligence instead of grep.",
+   "portable": "Widely supported.",
+   "cost": "Cheap when the server is local. opencode can download language servers automatically.",
+   "example": "The lsp tool answers \"where is this symbol defined\" without reading the file."
+  },
+  {
+   "id": "hooks",
+   "name": "Hooks",
+   "what": "Your own commands, run on tool events. The cheapest way to make an agent verify its own work: run the test suite after every edit.",
+   "portable": "Conceptually yes, the syntax is per-harness.",
+   "cost": "It runs on every matching event. A slow hook trains you to ignore it.",
+   "example": "\"PostToolUse\": [{ \"matcher\": \"Edit|Write\", \"hooks\": [{ \"type\": \"command\", \"command\": \"pytest -q\" }] }]"
+  },
+  {
+   "id": "plugins",
+   "name": "Plugins",
+   "what": "A packaged extension for the harness: tools, commands, hooks and config in one installable unit.",
+   "portable": "Usually harness-specific.",
+   "cost": "A plugin is trusted code with your permissions.",
+   "example": "opencode plugin <module>"
+  },
+  {
+   "id": "commands",
+   "name": "Slash commands",
+   "what": "Named prompts you can invoke. Arguments are positional ($1, $2) or free-form ($ARGUMENTS); shell output is injected with !`cmd`; files are pulled in with @path.",
+   "portable": "The convention is spreading across harnesses even where the syntax differs.",
+   "cost": "Free. This is the cheapest automation you can add to any agent.",
+   "example": "/review $1 !`git diff --stat` @src/api.ts"
+  }
+ ],
+ "context_playbook": [
+  {
+   "id": "inline-vs-reference",
+   "title": "Inline the rules, reference the code",
+   "body": "Always-loaded context should be a page, not a manual. Put the commands and conventions in AGENTS.md; point at the file that holds the implementation.",
+   "bad": "Pasting 400 lines of a module into every prompt.",
+   "good": "@backend/app/core/security.py - and let the agent read it."
+  },
+  {
+   "id": "compaction",
+   "title": "Compact at boundaries",
+   "body": "When a session gets long, summarise the finished work and start a new one. Compaction mid-debug-loop loses the thing you were actually chasing.",
+   "bad": "Compacting in the middle of a failing test.",
+   "good": "Compact right after a feature lands, while the plan is still clean."
+  },
+  {
+   "id": "subagents",
+   "title": "Subagents for side quests",
+   "body": "A read-only exploration subagent can sweep the repo and return a summary, without polluting the main context with 40 file contents.",
+   "bad": "Your main session reads 40 files to answer one question.",
+   "good": "@explore find every caller of parse_config, then report."
+  },
+  {
+   "id": "memory-files",
+   "title": "Memory files over memory features",
+   "body": "A plain markdown file you can read, edit and diff is better than a hidden store you cannot inspect. Put the facts in the repo.",
+   "bad": "The agent 'remembers' something you cannot see or correct.",
+   "good": "DECISIONS.md in the repo, edited by a human and by the agent."
+  },
+  {
+   "id": "budget",
+   "title": "Give every run a budget",
+   "body": "Set a step limit and a token ceiling. A loop with no stop condition is a bill with no cap.",
+   "bad": "The agent retries the same failing command until the provider rate-limits you.",
+   "good": "\"steps\": 8 on the agent, plus a token ceiling in the model config."
+  }
+ ]
+}
