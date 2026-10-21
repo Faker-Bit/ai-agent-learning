@@ -26,19 +26,19 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="no-scrollbar -mx-1 hidden min-w-0 flex-1 items-center gap-0.5 overflow-x-auto px-1 md:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-1.5 text-[13px] text-ink-muted transition hover:bg-term-800 hover:text-ink-strong"
+              className="shrink-0 whitespace-nowrap rounded-lg px-2.5 py-1.5 text-[13px] text-ink-muted transition hover:bg-term-800 hover:text-ink-strong"
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-2">
           <span className="hidden items-center gap-1.5 text-[11px] text-ink-muted lg:flex">
             <Cpu size={12} className="text-phos-500" /> opencode | zen | codex | claude | gemini | aider | pi
           </span>

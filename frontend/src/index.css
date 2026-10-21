@@ -95,6 +95,17 @@ a {
   background: transparent;
 }
 
+/* horizontal strips (nav, tab bars) scroll without a visible scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 /* ---------- surfaces ---------- */
 .panel {
   background: #0b0f0e;

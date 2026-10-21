@@ -13,60 +13,70 @@ GENERATED = "2026-10-21"
 RESOURCE_CATEGORIES: list[dict[str, Any]] = [
     {
         "id": "prompt-engineering",
+        "short": "Prompting",
         "title": "Prompt engineering",
         "blurb": "Guides, courses and tooling for writing prompts that actually produce the output you wanted.",
         "count": 11
     },
     {
         "id": "prompt-security",
+        "short": "Security",
         "title": "Injection, jailbreaks & red teaming",
         "blurb": "The security side: attack research, scanners, sandboxes and safe testing harnesses.",
         "count": 17
     },
     {
         "id": "guardrails",
+        "short": "Guardrails",
         "title": "Guardrails & gateways",
         "blurb": "Policy enforcement that lives outside the model: gateways, rails and output filters.",
         "count": 4
     },
     {
         "id": "model-servers",
+        "short": "Serving",
         "title": "Serving models yourself",
         "blurb": "Run the weights on your own hardware, or route to every hosted provider through one endpoint.",
         "count": 5
     },
     {
         "id": "chat-uis",
+        "short": "Chat UIs",
         "title": "Chat interfaces",
         "blurb": "A UI for talking to models you host or route - handy for evaluating behaviour by hand.",
         "count": 4
     },
     {
         "id": "agent-frameworks",
+        "short": "Frameworks",
         "title": "Agent frameworks",
         "blurb": "Building agents in code instead of in a terminal - multi-agent, planning, tool loops.",
         "count": 14
     },
     {
         "id": "agent-skills",
+        "short": "Skills",
         "title": "Skills & context",
         "blurb": "Packaged procedures, memory and context compression for agents that have to remember.",
         "count": 10
     },
     {
         "id": "eval-and-observability",
+        "short": "Evals",
         "title": "Evals & observability",
         "blurb": "Trace what your agent did, score it, and catch regressions before your users do.",
         "count": 5
     },
     {
         "id": "model-tooling",
+        "short": "Model tools",
         "title": "Per-model tooling",
         "blurb": "The official and community tooling around each model family.",
         "count": 10
     },
     {
         "id": "fine-tuning",
+        "short": "Fine-tuning",
         "title": "Fine-tuning & training",
         "blurb": "Make a model yours: SFT, LoRA, DPO and the data plumbing around them.",
         "count": 3

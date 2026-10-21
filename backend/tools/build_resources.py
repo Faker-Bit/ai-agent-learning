@@ -15,6 +15,7 @@ OUT = Path(__file__).resolve().parent.parent / "app" / "content" / "resources.py
 CATEGORIES: list[dict[str, Any]] = [
     {
         "id": "prompt-engineering",
+        "short": "Prompting",
         "title": "Prompt engineering",
         "blurb": "Guides, courses and tooling for writing prompts that actually produce the output you wanted.",
         "picks": [
@@ -33,6 +34,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "prompt-security",
+        "short": "Security",
         "title": "Injection, jailbreaks & red teaming",
         "blurb": "The security side: attack research, scanners, sandboxes and safe testing harnesses.",
         "picks": [
@@ -57,6 +59,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "guardrails",
+        "short": "Guardrails",
         "title": "Guardrails & gateways",
         "blurb": "Policy enforcement that lives outside the model: gateways, rails and output filters.",
         "picks": [
@@ -68,6 +71,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "model-servers",
+        "short": "Serving",
         "title": "Serving models yourself",
         "blurb": "Run the weights on your own hardware, or route to every hosted provider through one endpoint.",
         "picks": [
@@ -80,6 +84,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "chat-uis",
+        "short": "Chat UIs",
         "title": "Chat interfaces",
         "blurb": "A UI for talking to models you host or route - handy for evaluating behaviour by hand.",
         "picks": [
@@ -91,6 +96,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "agent-frameworks",
+        "short": "Frameworks",
         "title": "Agent frameworks",
         "blurb": "Building agents in code instead of in a terminal - multi-agent, planning, tool loops.",
         "picks": [
@@ -112,6 +118,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "agent-skills",
+        "short": "Skills",
         "title": "Skills & context",
         "blurb": "Packaged procedures, memory and context compression for agents that have to remember.",
         "picks": [
@@ -129,6 +136,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "eval-and-observability",
+        "short": "Evals",
         "title": "Evals & observability",
         "blurb": "Trace what your agent did, score it, and catch regressions before your users do.",
         "picks": [
@@ -141,6 +149,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "model-tooling",
+        "short": "Model tools",
         "title": "Per-model tooling",
         "blurb": "The official and community tooling around each model family.",
         "picks": [
@@ -158,6 +167,7 @@ CATEGORIES: list[dict[str, Any]] = [
     },
     {
         "id": "fine-tuning",
+        "short": "Fine-tuning",
         "title": "Fine-tuning & training",
         "blurb": "Make a model yours: SFT, LoRA, DPO and the data plumbing around them.",
         "picks": [
@@ -337,6 +347,7 @@ def main() -> int:
         categories.append(
             {
                 "id": category["id"],
+                "short": category.get("short", category["title"]),
                 "title": category["title"],
                 "blurb": category["blurb"],
                 "count": len(picks),

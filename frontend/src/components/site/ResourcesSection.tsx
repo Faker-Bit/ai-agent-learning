@@ -26,6 +26,7 @@ interface Resource {
 
 interface ResourceCategory {
   id: string;
+  short: string;
   title: string;
   blurb: string;
   count: number;
@@ -105,29 +106,25 @@ export function ResourcesSection() {
               className="w-full rounded-xl border border-line bg-term-900 py-2.5 pl-10 pr-4 text-[13px] text-ink outline-none transition focus:border-phos-500/60"
             />
           </div>
-          <div className="flex items-center gap-1.5 rounded-xl border border-line bg-term-900 p-1">
-            <Filter size={13} className="ml-2 text-ink-muted" />
-            <button
-              onClick={() => setCategory("all")}
-              className={`rounded-lg px-3 py-1.5 text-[12px] transition ${
-                category === "all" ? "bg-phos-500/15 text-phos-300" : "text-ink-muted hover:text-ink"
-              }`}
-            >
-              all
-            </button>
-            {categories.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setCategory(item.id)}
-                className={`rounded-lg px-3 py-1.5 text-[12px] transition ${
-                  category === item.id
-                    ? "bg-phos-500/15 text-phos-300"
-                    : "text-ink-muted hover:text-ink"
-                }`}
-              >
-                {item.title.split(" ")[0].toLowerCase()}
-              </button>
-            ))}
+          <div className="rounded-xl border border-line bg-term-900 p-1">
+            <div className="no-scrollbar flex items-center gap-1 overflow-x-auto">
+              <span className="ml-2 shrink-0 text-ink-muted">
+                <Filter size={13} />
+              </span>
+              <FilterChip
+                label="all"
+                active={category === "all"}
+                onClick={() => setCategory("all")}
+              />
+              {categories.map((item) => (
+                <FilterChip
+                  key={item.id}
+                  label={item.short}
+                  active={category === item.id}
+                  onClick={() => setCategory(item.id)}
+                />
+              ))}
+            </div>
           </div>
           <span className="font-mono text-[12px] text-ink-muted">
             {payload ? `${payload.matched}/${payload.total}` : "..."}
@@ -267,4 +264,27 @@ function groupByCategory(resources: Resource[]): [string, Resource[]][] {
     map.set(item.category_title, list);
   }
   return [...map.entries()];
+}
+
+function FilterChip({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-[12px] font-medium transition ${
+        active
+          ? "bg-phos-400 text-term-950"
+          : "text-ink-muted hover:bg-term-800 hover:text-ink"
+      }`}
+    >
+      {label}
+    </button>
+  );
 }

@@ -48,21 +48,28 @@ export function AgentsSection({ agents }: { agents: Agent[] }) {
             body="Twelve tools that people actually use to code with models. What each one is for, how to install it, and the commands worth memorising."
           />
 
-          <div className="flex items-center gap-1.5 rounded-xl border border-line bg-term-900 p-1">
-            <Filter size={13} className="ml-2 text-ink-muted" />
-            {kinds.map((option) => (
-              <button
-                key={option}
-                onClick={() => setKind(option)}
-                className={`rounded-lg px-3 py-1.5 text-[12px] transition ${
-                  kind === option
-                    ? "bg-phos-500/15 text-phos-300"
-                    : "text-ink-muted hover:text-ink"
-                }`}
-              >
-                {option}
-              </button>
-            ))}
+          <div className="w-full rounded-xl border border-line bg-term-900 p-1 sm:w-auto">
+            <div className="no-scrollbar flex items-center gap-1 overflow-x-auto">
+              <span className="ml-2 shrink-0 text-ink-muted">
+                <Filter size={13} />
+              </span>
+              {kinds.map((option) => {
+                const active = kind === option;
+                return (
+                  <button
+                    key={option}
+                    onClick={() => setKind(option)}
+                    className={`shrink-0 whitespace-nowrap rounded-lg px-3 py-1.5 text-[12px] font-medium transition ${
+                      active
+                        ? "bg-phos-400 text-term-950"
+                        : "text-ink-muted hover:bg-term-800 hover:text-ink"
+                    }`}
+                  >
+                    {option}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 

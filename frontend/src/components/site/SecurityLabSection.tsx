@@ -102,29 +102,41 @@ export function SecurityLabSection({ lab }: { lab: SecurityLab }) {
           body="The uncomfortable half of prompt engineering: how models get manipulated, how the security community measures it, how to detect it in your own logs, and how to test it safely. Everything here is framed as authorised testing of systems you own."
         />
 
-        <div className="mt-8 flex flex-wrap gap-1.5 rounded-xl border border-line bg-term-900 p-1.5">
-          {(
-            [
-              ["taxonomy", "Attack taxonomy", Radar],
-              ["signatures", "Detection signatures", FileSearch],
-              ["defences", "Defence layers", ShieldCheck],
-              ["playbook", "Safe testing playbook", ClipboardCheck],
-              ["research", "Research & sources", BookOpen],
-            ] as const
-          ).map(([id, label, Icon]) => (
-            <button
-              key={id}
-              onClick={() => setTab(id)}
-              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[12.5px] transition ${
-                tab === id
-                  ? "bg-phos-500/15 text-phos-300"
-                  : "text-ink-muted hover:bg-term-800 hover:text-ink"
-              }`}
-            >
-              <Icon size={13} />
-              {label}
-            </button>
-          ))}
+        <div className="mt-8 rounded-xl border border-line bg-term-900 p-1">
+          <div className="no-scrollbar flex items-center gap-1 overflow-x-auto">
+            {(
+              [
+                ["taxonomy", "Attack taxonomy", Radar],
+                ["signatures", "Detection signatures", FileSearch],
+                ["defences", "Defence layers", ShieldCheck],
+                ["playbook", "Safe testing", ClipboardCheck],
+                ["research", "Research & sources", BookOpen],
+              ] as const
+            ).map(([id, label, Icon]) => {
+              const active = tab === id;
+              return (
+                <button
+                  key={id}
+                  onClick={() => setTab(id)}
+                  className={`relative shrink-0 whitespace-nowrap rounded-lg px-3.5 py-2 text-[12.5px] font-medium transition ${
+                    active ? "text-term-950" : "text-ink-muted hover:text-ink"
+                  }`}
+                >
+                  {active ? (
+                    <motion.span
+                      layoutId="security-tab"
+                      className="absolute inset-0 rounded-lg bg-phos-400"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  ) : null}
+                  <span className="relative z-10 inline-flex items-center gap-1.5">
+                    <Icon size={13} />
+                    {label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-6">
