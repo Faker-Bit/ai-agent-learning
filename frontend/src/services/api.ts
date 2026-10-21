@@ -19,6 +19,59 @@ export interface SitePayload {
   error?: string;
 }
 
+export interface ResourcePayload {
+  generated: string;
+  categories: {
+    id: string;
+    short: string;
+    title: string;
+    blurb: string;
+    count: number;
+  }[];
+  resources: {
+    id: string;
+    name: string;
+    repo: string;
+    url: string;
+    category: string;
+    category_title: string;
+    stars: number;
+    license: string;
+    pushed: string;
+    description: string;
+    topics: string[];
+    language: string;
+    install: string;
+    example: string[];
+    note: string;
+    homepage: string;
+  }[];
+  total: number;
+  matched: number;
+}
+
+/** Loads the GitHub research catalogue, filtered server-side. */
+export async function fetchResources(
+  query: string,
+  category: string,
+): Promise<ResourcePayload> {
+  const params = new URLSearchParams();
+  if (query.trim()) params.set("q", query.trim());
+  if (category && category !== "all") params.set("category", category);
+  const suffix = params.toString() ? `?${params}` : "";
+  const res = await fetch(`${BASE}/site/resources${suffix}`, {
+    headers: { Accept: "application/json" },
+  });
+  if (!res.ok) {
+    throw new ApiRequestError(
+      `The catalogue API returned ${res.status}. Start the backend with start.bat and retry.`,
+      "http_error",
+      res.status,
+    );
+  }
+  return res.json() as Promise<ResourcePayload>;
+}
+
 /**
  * Loads the site content from the API, falling back to the copy bundled at
  * build time. The site therefore still renders when the backend is stopped,

@@ -38,6 +38,8 @@ from app.content.walkthroughs import WALKTHROUGHS
 from app.providers.registry import CURATED_MODELS, PROVIDER_META, ProviderRegistry
 
 router = APIRouter(prefix="/site", tags=["site"])
+# Short alias so the catalogue is also reachable at /api/resources.
+resources_router = APIRouter(prefix="/resources", tags=["resources"])
 
 
 async def build_payload() -> dict[str, Any]:
@@ -110,6 +112,7 @@ async def build_payload() -> dict[str, Any]:
 
 
 @router.get("/resources")
+@resources_router.get("")
 async def resources(
     q: str = "", category: str = "", limit: int = 200
 ) -> dict[str, Any]:

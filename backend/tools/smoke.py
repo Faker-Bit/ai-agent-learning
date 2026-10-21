@@ -92,6 +92,8 @@ def main() -> int:
         catalogue = httpx.get(f"{BASE}/api/site/resources", timeout=15).json()
         check("resource catalogue", catalogue["total"] >= 60, str(catalogue["total"]))
         check("resource categories", len(catalogue["categories"]) >= 8)
+        alias = httpx.get(f"{BASE}/api/resources", timeout=15).json()
+        check("resource alias path", alias["total"] == catalogue["total"])
         filtered = httpx.get(
             f"{BASE}/api/site/resources", params={"category": "prompt-security"}, timeout=15
         ).json()

@@ -4,41 +4,7 @@ import { useEffect, useState } from "react";
 
 import { SectionHeading } from "./Chrome";
 import { CopyButton } from "../terminal/Terminal";
-
-interface Resource {
-  id: string;
-  name: string;
-  repo: string;
-  url: string;
-  category: string;
-  category_title: string;
-  stars: number;
-  license: string;
-  pushed: string;
-  description: string;
-  topics: string[];
-  language: string;
-  install: string;
-  example: string[];
-  note: string;
-  homepage: string;
-}
-
-interface ResourceCategory {
-  id: string;
-  short: string;
-  title: string;
-  blurb: string;
-  count: number;
-}
-
-interface ResourcePayload {
-  generated: string;
-  categories: ResourceCategory[];
-  resources: Resource[];
-  total: number;
-  matched: number;
-}
+import { fetchResources, type ResourcePayload } from "../../services/api";
 
 export function ResourcesSection() {
   const [query, setQuery] = useState("");
@@ -52,12 +18,7 @@ export function ResourcesSection() {
     const handle = window.setTimeout(async () => {
       setLoading(true);
       try {
-        const params = new URLSearchParams();
-        if (query.trim()) params.set("q", query.trim());
-        if (category !== "all") params.set("category", category);
-        const res = await fetch(`/api/resources${params.toString() ? `?${params}` : ""}`);
-        if (!res.ok) throw new Error(`The catalogue API returned ${res.status}`);
-        const data = (await res.json()) as ResourcePayload;
+        const data = await fetchResources(query, category);
         if (!cancelled) {
           setPayload(data);
           setError(null);
@@ -255,6 +216,8 @@ function formatStars(stars: number): string {
   if (stars >= 1000) return `${(stars / 1000).toFixed(stars >= 10000 ? 0 : 1)}k`;
   return String(stars);
 }
+
+type Resource = ResourcePayload["resources"][number];
 
 function groupByCategory(resources: Resource[]): [string, Resource[]][] {
   const map = new Map<string, Resource[]>();

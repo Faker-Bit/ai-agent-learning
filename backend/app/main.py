@@ -60,6 +60,7 @@ def create_app() -> FastAPI:
 
     app.include_router(health.router, prefix="/api")
     app.include_router(site.router, prefix="/api")
+    app.include_router(site.resources_router, prefix="/api")
 
     _mount_frontend(app, cfg)
     return app
